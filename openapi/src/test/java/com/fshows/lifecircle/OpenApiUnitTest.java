@@ -47,7 +47,7 @@ public class OpenApiUnitTest {
         System.out.println(param);
 
 
-        TreeMap<String, String> map = new TreeMap<>();
+        TreeMap<String, String> map = new TreeMap<String, String>();
         map.put("app_id", "20170609152021917511");
         map.put("method", "openapi.payment.order.close");
         map.put("format", "json");

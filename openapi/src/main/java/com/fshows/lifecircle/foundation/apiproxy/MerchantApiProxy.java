@@ -50,7 +50,12 @@ public class MerchantApiProxy extends AbsApiProxy {
         builder.readTimeout(30, TimeUnit.SECONDS);
         builder.writeTimeout(30, TimeUnit.SECONDS);
 
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> System.out.println("\t\t" + message));
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                System.out.println("\t\t" + message);
+            }
+        });
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(loggingInterceptor);
         return builder.build();

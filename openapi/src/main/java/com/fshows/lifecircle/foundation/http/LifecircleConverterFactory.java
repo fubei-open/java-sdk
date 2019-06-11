@@ -5,6 +5,9 @@ import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.annimon.stream.Optional;
+import com.annimon.stream.Stream;
+import com.annimon.stream.function.Predicate;
 import com.fshows.lifecircle.foundation.annotation.LifecycleApi;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -15,8 +18,6 @@ import retrofit2.Retrofit;
 import javax.annotation.Nullable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * 生活圈OpenAPI相关的转换工厂类
@@ -49,7 +50,7 @@ public class LifecircleConverterFactory extends Converter.Factory {
      */
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type,  Annotation[] annotations, Retrofit retrofit) {
-        return new LifecircleResponseBodyConverter<>(type);
+        return new LifecircleResponseBodyConverter<ResponseBody>(type);
     }
 
     /**
@@ -65,9 +66,15 @@ public class LifecircleConverterFactory extends Converter.Factory {
     @Override
     @Nullable
     public Converter<?, RequestBody> requestBodyConverter(Type type,  Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
-        Optional<Annotation> api = Arrays.stream(methodAnnotations)
-                .filter(p -> p instanceof LifecycleApi)
+        Optional<Annotation> api = Stream.of(methodAnnotations)
+                .filter(new Predicate<Annotation>() {
+                    @Override
+                    public boolean test(Annotation value) {
+                        return value instanceof LifecycleApi;
+                    }
+                })
                 .findFirst();
-        return new LifecircleRequestBodyConverter<>((LifecycleApi) api.orElse(null));
+
+        return new LifecircleRequestBodyConverter<RequestBody>((LifecycleApi) api.orElse(null));
     }
 }

@@ -71,11 +71,11 @@ public class LifecircleRequestBodyConverter<T> implements Converter<T, RequestBo
         }
 
         // 设置必须参数
-        Optional.ofNullable(lifecycleApi).executeIfPresent(p -> {
+        if (Optional.ofNullable(lifecycleApi).isPresent()) {
             param.setMethod(lifecycleApi.method());
             param.setFormat(lifecycleApi.format());
             param.setVersion(lifecycleApi.version());
-        });
+        }
         param.setAppId(AppConfig.getInstance().getAppId());
         param.setNonce(RandomStringUtil.randomAlphabet(RANDOM_BIT));
         // 签名
