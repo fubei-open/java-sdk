@@ -1,0 +1,5 @@
+/**
+ * ${REMARK}
+ */
+ @JSONField(name = "${JSON_FIELD}")
+ private ${DATA_TYPE} ${FIELD_NAME};

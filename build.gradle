@@ -1,0 +1,60 @@
+group 'com.fshows.lifecircle'
+version '1.0-SNAPSHOT'
+
+// 所有项目
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'idea'
+
+    configurations {
+        compile.exclude module: 'spring-boot-starter-logging'
+        compile.exclude module: "logback-classic"
+        compile.exclude module: "log4j-over-slf4j"
+        compile.exclude module: 'slf4j-log4j12'
+        compile.exclude module: 'log4j'
+    }
+}
+
+// 子项目
+subprojects {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    // 打包源码
+    task packageSources(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts.archives packageSources
+    clean.delete += file("$projectDir/out")
+
+    ext {
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url "https://mirrors.huaweicloud.com/repository/maven/" }
+    }
+
+    dependencies {
+        implementation 'org.apache.commons:commons-lang3:3.4'
+        implementation 'com.google.guava:guava:26.0-jre'
+        implementation 'com.alibaba:fastjson:1.2.31'
+        implementation 'commons-codec:commons-codec:1.10'
+        implementation 'com.annimon:stream:1.2.1'
+        implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+        implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
+        
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.powermock:powermock-core:1.6.5'
+        testImplementation 'org.powermock:powermock-api-mockito:1.6.5'
+        testImplementation 'org.powermock:powermock-module-junit4:1.6.5'
+        testImplementation 'org.mockito:mockito-all:1.10.19'
+    }
+}
