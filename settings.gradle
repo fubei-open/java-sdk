@@ -1,4 +1,4 @@
-rootProject.name = 'fubei-openapi-java8-sdk'
+rootProject.name = 'fubei-openapi-java-sdk'
 include 'openapi'
 include 'tools'
 
