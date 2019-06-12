@@ -6,11 +6,11 @@ import java.text.MessageFormat;
  * 业务异常
  *
  * @author John (linwei@fshows.com)
- * @version $Id BizException.java, v1.0 2019-06-07 11:57 John Exp$
+ * @version $Id SdkBizException.java, v1.0 2019-06-07 11:57 John Exp$
  */
-public class BizException extends AbstractNetException {
+public class SdkBizException extends AbstractNetException {
 
-    public BizException(String code, String message) {
+    public SdkBizException(String code, String message) {
         this.code = code;
         this.message = message;
     }

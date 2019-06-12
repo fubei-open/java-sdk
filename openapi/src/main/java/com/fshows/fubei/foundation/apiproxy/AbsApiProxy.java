@@ -29,6 +29,10 @@ public abstract class AbsApiProxy {
      */
     protected abstract void initRetrofit(Retrofit.Builder builder);
 
+    /**
+     * 获得proxy的地址
+     * @return proxy地址
+     */
     protected abstract String getBaseUrl();
 
     /**

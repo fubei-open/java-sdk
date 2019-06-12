@@ -50,6 +50,7 @@ public class MerchantApiProxy extends AbsApiProxy {
         builder.readTimeout(30, TimeUnit.SECONDS);
         builder.writeTimeout(30, TimeUnit.SECONDS);
 
+        // 设置日志打印的拦截器
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {

@@ -43,18 +43,17 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.apache.commons:commons-lang3:3.4'
-        implementation 'com.google.guava:guava:26.0-jre'
-        implementation 'com.alibaba:fastjson:1.2.31'
-        implementation 'commons-codec:commons-codec:1.10'
-        implementation 'com.annimon:stream:1.2.1'
-        implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-        implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
-        
         testImplementation 'junit:junit:4.12'
         testImplementation 'org.powermock:powermock-core:1.6.5'
         testImplementation 'org.powermock:powermock-api-mockito:1.6.5'
         testImplementation 'org.powermock:powermock-module-junit4:1.6.5'
         testImplementation 'org.mockito:mockito-all:1.10.19'
+        testImplementation 'commons-codec:commons-codec:1.10'
+
+        implementation 'com.google.guava:guava:26.0-jre'
+        implementation 'com.alibaba:fastjson:1.2.31'
+        implementation 'com.annimon:stream:1.2.1'
+        implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+        implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
     }
 }
