@@ -33,6 +33,12 @@ public class PaymentScanOrderModel implements BaseModel {
     private BigDecimal totalFee;
 
     /**
+     * 支付二维码
+     */
+    @JSONField(name = "qr_code")
+    private String qrCode;
+
+    /**
      * 门店ID,当存在多个门店时，此字段必填
      */
     @JSONField(name = "store_id")
@@ -152,5 +158,13 @@ public class PaymentScanOrderModel implements BaseModel {
 
     public void setAttach(String attach) {
         this.attach = attach;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 }

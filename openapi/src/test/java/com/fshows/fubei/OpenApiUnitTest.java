@@ -3,17 +3,20 @@ package com.fshows.fubei;
 import com.alibaba.fastjson.JSON;
 import com.fshows.fubei.biz.merchant.api.legacy.MerchantCommonApi;
 import com.fshows.fubei.biz.merchant.api.legacy.MerchantOrderApi;
+import com.fshows.fubei.biz.merchant.api.legacy.MerchantPaymentApi;
 import com.fshows.fubei.biz.merchant.api.legacy.MerchantStoreApi;
 import com.fshows.fubei.biz.merchant.model.BizResult;
 import com.fshows.fubei.biz.merchant.model.entity.PaymentCloseOrderModel;
+import com.fshows.fubei.biz.merchant.model.entity.PaymentScanOrderModel;
+import com.fshows.fubei.biz.merchant.model.entity.PaymentSwipeOrderModel;
 import com.fshows.fubei.biz.merchant.model.entity.ServerTimeModel;
-import com.fshows.fubei.biz.merchant.model.param.ParamPaymentOrderClose;
-import com.fshows.fubei.biz.merchant.model.param.ParamPaymentQueryStore;
-import com.fshows.fubei.biz.merchant.model.param.ParamQueryStoreCategory;
+import com.fshows.fubei.biz.merchant.model.param.*;
 import com.fshows.fubei.foundation.apiproxy.MerchantApiProxy;
-import com.fshows.fubei.foundation.http.LifecircleConverterFactory;
+import com.fshows.fubei.foundation.constants.OpenApiConstants;
+import com.fshows.fubei.foundation.http.FubeiOpenApiConverterFactory;
 import com.fshows.fubei.foundation.model.RequestParam;
 import com.fshows.fubei.foundation.utils.SignUtil;
+import com.fshows.fubei.test.MerchantOrderIdUtil;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +26,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -33,6 +38,7 @@ public class OpenApiUnitTest {
         AppConfig appConfig = AppConfig.getInstance();
         appConfig.setAppId("20180916120218114790");
         appConfig.setAppSecret("e4927152b7c18b0ddcc2648bdeabb452");
+        appConfig.setEnv(OpenApiConstants.ENV_STABLE);
     }
 
     @Test
@@ -72,17 +78,31 @@ public class OpenApiUnitTest {
         String baseUrl = "https://shq-api-test.51fubei.com/";
 //        String baseUrl = "https://shq-api.51fubei.com/";
         Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
-                .addConverterFactory(new LifecircleConverterFactory())
+                .addConverterFactory(new FubeiOpenApiConverterFactory())
                 .build();
         TestCase.assertNotNull(retrofit);
     }
 
+    @Test
+    public void testMerchantOrderId() {
+        String merchantOrderId = MerchantOrderIdUtil.genMerchantOrderId();
+        System.out.println(merchantOrderId);
+    }
+
+    /**
+     * 服务器时间获取
+     * @throws IOException
+     */
     @Test
     public void testServerTime() throws IOException {
         Response<ServerTimeModel> response = MerchantApiProxy.getInstance().create(MerchantCommonApi.class).getServerTime(new Object()).execute();
         System.out.println(response.body());
     }
 
+    /**
+     * 订单关闭
+     * @throws IOException
+     */
     @Test
     public void testOrderClose() throws IOException {
         ParamPaymentOrderClose p = new ParamPaymentOrderClose();
@@ -92,6 +112,10 @@ public class OpenApiUnitTest {
         System.out.println(data);
     }
 
+    /**
+     * 查询门店类目
+     * @throws IOException
+     */
     @Test
     public void testQueryStoreCategory() throws IOException {
         ParamQueryStoreCategory p1 = new ParamQueryStoreCategory();
@@ -100,11 +124,56 @@ public class OpenApiUnitTest {
         System.out.println(data);
     }
 
+    /**
+     * 查询门店信息
+     * @throws IOException
+     */
     @Test
     public void testStoreQuery() throws IOException {
         ParamPaymentQueryStore p1 = new ParamPaymentQueryStore();
         Response<BizResult.StoreQuery> response = MerchantApiProxy.getInstance().create(MerchantStoreApi.class).queryStore(p1).execute();
         BizResult.StoreQuery data = response.body();
         System.out.println(data);
+    }
+
+    /**
+     * 测试扫码支付
+     * 注意！！使用测试环境涉及到金额扣款的接口，必须调用退款接口，否则会影响第二天清算
+     * 一定要退款，切记！！！！！
+     */
+    @Test
+    public void testScanOrder() throws IOException {
+        ParamPaymentOrderScan param = new ParamPaymentOrderScan();
+        param.setMerchantOrderSn(MerchantOrderIdUtil.genMerchantOrderId());
+        param.setAttach("订单备注12345678");
+        // 支付宝支付
+        param.setType(2);
+        // 可调用testStoreQuery或的StoreId
+        param.setStoreId(1901801);
+        param.setBody("测试商品001");
+        param.setTotalFee(new BigDecimal(0.1));
+        PaymentScanOrderModel responseModel = MerchantApiProxy.getInstance().create(MerchantPaymentApi.class).orderScan(param).execute().body();
+        System.out.println(MessageFormat.format("二维码：{0}", responseModel.getQrCode()));
+    }
+
+    /**
+     * 测试扫码支付
+     * 注意！！使用测试环境涉及到金额扣款的接口，必须调用退款接口，否则会影响第二天清算
+     * 一定要退款，切记！！！！！
+     */
+    @Test
+    public void testSwipeOrder() throws IOException {
+        ParamPaymentOrderSwipe param = new ParamPaymentOrderSwipe();
+        param.setMerchantOrderSn("201906130001123100003");
+        param.setAttach("订单备注12345678");
+        // 支付宝支付
+        param.setType(2);
+        param.setAuthCode("285251616763663243");
+        // 可调用testStoreQuery或的StoreId
+        param.setStoreId(1901801);
+        param.setBody("测试商品001");
+        param.setTotalFee(new BigDecimal(0.1));
+        PaymentSwipeOrderModel responseModel = MerchantApiProxy.getInstance().create(MerchantPaymentApi.class).orderSwipe(param).execute().body();
+        System.out.println(responseModel.toString());
     }
 }

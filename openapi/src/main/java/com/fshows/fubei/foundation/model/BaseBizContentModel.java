@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSON;
  * @author John (linwei@fshows.com)
  * @version $Id BaseBizContentModel.java, v1.0 2019-06-06 00:02 John Exp$
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings("WeakerAccess")
 public class BaseBizContentModel implements BaseModel {
 
     public String toJson() {

@@ -2,7 +2,7 @@ package com.fshows.fubei.foundation.apiproxy;
 
 import com.fshows.fubei.AppConfig;
 import com.fshows.fubei.foundation.constants.OpenApiConstants;
-import com.fshows.fubei.foundation.http.LifecircleConverterFactory;
+import com.fshows.fubei.foundation.http.FubeiOpenApiConverterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -34,7 +34,7 @@ public class MerchantApiProxy extends AbsApiProxy {
     @Override
     protected void initRetrofit(Retrofit.Builder builder) {
         // 设置BaseUrl和转换工厂
-        builder.baseUrl(getBaseUrl()).addConverterFactory(new LifecircleConverterFactory());
+        builder.baseUrl(getBaseUrl()).addConverterFactory(new FubeiOpenApiConverterFactory());
         // 设置http client
         builder.client(getOkHttpClient());
     }
@@ -46,9 +46,9 @@ public class MerchantApiProxy extends AbsApiProxy {
     @SuppressWarnings("WeakerAccess")
     protected OkHttpClient getOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(15, TimeUnit.SECONDS);
-        builder.readTimeout(30, TimeUnit.SECONDS);
-        builder.writeTimeout(30, TimeUnit.SECONDS);
+        builder.connectTimeout(AppConfig.getInstance().getHttpConnectTimeout(), TimeUnit.SECONDS);
+        builder.readTimeout(AppConfig.getInstance().getHttpReadTimeout(), TimeUnit.SECONDS);
+        builder.writeTimeout(AppConfig.getInstance().getHttpWriteTimeout(), TimeUnit.SECONDS);
 
         // 设置日志打印的拦截器
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {

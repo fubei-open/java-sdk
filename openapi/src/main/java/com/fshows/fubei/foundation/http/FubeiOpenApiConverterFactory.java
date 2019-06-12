@@ -20,13 +20,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 /**
- * 生活圈OpenAPI相关的转换工厂类
+ * 付呗开放平台 接口转换工厂
  *
  * @author John (linwei@fshows.com)
- * @version $Id LifecircleConverterFactory.java, v1.0 2019-06-06 13:33 John Exp$
+ * @version $Id FubeiOpenApiConverterFactory.java, v1.0 2019-06-06 13:33 John Exp$
  */
 @SuppressWarnings("unused")
-public class LifecircleConverterFactory extends Converter.Factory {
+public class FubeiOpenApiConverterFactory extends Converter.Factory {
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=UTF-8");
     private static final Feature[] EMPTY_SERIALIZER_FEATURES = new Feature[0];
 
@@ -37,7 +37,7 @@ public class LifecircleConverterFactory extends Converter.Factory {
     private SerializeConfig serializeConfig;
     private SerializerFeature[] serializerFeatures;
 
-    public LifecircleConverterFactory() {
+    public FubeiOpenApiConverterFactory() {
     }
 
     /**
@@ -50,7 +50,7 @@ public class LifecircleConverterFactory extends Converter.Factory {
      */
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type,  Annotation[] annotations, Retrofit retrofit) {
-        return new LifecircleResponseBodyConverter<ResponseBody>(type);
+        return new FubeiOpenApiResponseBodyConverter<ResponseBody>(type);
     }
 
     /**
@@ -75,6 +75,6 @@ public class LifecircleConverterFactory extends Converter.Factory {
                 })
                 .findFirst();
 
-        return new LifecircleRequestBodyConverter<RequestBody>((FubeiOpenApi) api.orElse(null));
+        return new FubeiOpenApiRequestBodyConverter<RequestBody>((FubeiOpenApi) api.orElse(null));
     }
 }

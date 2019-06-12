@@ -54,6 +54,11 @@ public interface BizKeyConstants {
     String RESULT_CODE = "result_code";
 
     /**
+     * 平台方错误代码
+     */
+    String RESULT_SUBCODE = "sub_code";
+
+    /**
      * 返回结果消息
      */
     String RESULT_MESSAGE = "result_message";

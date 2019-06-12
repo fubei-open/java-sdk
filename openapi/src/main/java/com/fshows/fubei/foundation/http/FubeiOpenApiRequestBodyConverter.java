@@ -19,13 +19,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * 生活圈接口请求转换
+ * 付呗开放平台 接口Request转换
  *
  * @author John (linwei@fshows.com)
- * @version $Id LifecircleRequestBodyConverter.java, v1.0 2019-06-06 14:05 John Exp$
+ * @version $Id FubeiOpenApiRequestBodyConverter.java, v1.0 2019-06-06 14:05 John Exp$
  */
 @SuppressWarnings("unused")
-public class LifecircleRequestBodyConverter<T> implements Converter<T, RequestBody> {
+public class FubeiOpenApiRequestBodyConverter<T> implements Converter<T, RequestBody> {
     /**
      * 随机位数
      */
@@ -47,7 +47,7 @@ public class LifecircleRequestBodyConverter<T> implements Converter<T, RequestBo
      */
     private FubeiOpenApi fubeiOpenApi;
 
-    LifecircleRequestBodyConverter(@Nullable FubeiOpenApi fubeiOpenApi) {
+    FubeiOpenApiRequestBodyConverter(@Nullable FubeiOpenApi fubeiOpenApi) {
         if (fubeiOpenApi != null) {
             this.fubeiOpenApi = fubeiOpenApi;
         }
@@ -88,7 +88,7 @@ public class LifecircleRequestBodyConverter<T> implements Converter<T, RequestBo
         return serializeConfig;
     }
 
-    public LifecircleRequestBodyConverter<T> setSerializeConfig(SerializeConfig serializeConfig) {
+    public FubeiOpenApiRequestBodyConverter<T> setSerializeConfig(SerializeConfig serializeConfig) {
         this.serializeConfig = serializeConfig;
         return this;
     }
@@ -97,7 +97,7 @@ public class LifecircleRequestBodyConverter<T> implements Converter<T, RequestBo
         return serializerFeatures;
     }
 
-    public LifecircleRequestBodyConverter<T> setSerializerFeatures(SerializerFeature[] serializerFeatures) {
+    public FubeiOpenApiRequestBodyConverter<T> setSerializerFeatures(SerializerFeature[] serializerFeatures) {
         this.serializerFeatures = serializerFeatures;
         return this;
     }

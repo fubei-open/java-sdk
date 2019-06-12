@@ -28,9 +28,14 @@ public interface OpenApiConstants {
     String GATEWAY = "gateway";
 
     /**
-     * 成功的结果码
+     * 成功的结果码：200
      */
     int RESULT_CODE_SUCCESS = 200;
+
+    /**
+     * 平台方错误代码：400
+     */
+    int RESULT_CODE_PLATFORM_ERROR = 400;
 
     /**
      * debug环境

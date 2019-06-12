@@ -42,7 +42,7 @@ public class ParamPaymentOrderSwipe extends BaseBizContentModel {
      * 门店ID,当存在多个门店时,此字段必填
      */
     @JSONField(name = "store_id")
-    private Integer storeid;
+    private Integer storeId;
 
     /**
      * 收银员ID
@@ -120,12 +120,12 @@ public class ParamPaymentOrderSwipe extends BaseBizContentModel {
         this.totalFee = totalFee;
     }
 
-    public Integer getStoreid() {
-        return storeid;
+    public Integer getStoreId() {
+        return storeId;
     }
 
-    public void setStoreid(Integer storeid) {
-        this.storeid = storeid;
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
     public Integer getCashierId() {

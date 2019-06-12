@@ -227,8 +227,8 @@ protected OkHttpClient getOkHttpClient() {
     // 设置日志打印的拦截器
     HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
         @Override
-        public void log(String message) {
-            System.out.println("\t\t" + message);
+        public void log(String resultMessage) {
+            System.out.println("\t\t" + resultMessage);
         }
     });
     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -50,6 +50,14 @@ public class CommonResultModel<T> implements BaseModel {
         this.resultMessage = resultMessage;
     }
 
+    public String getSubCode() {
+        return subCode;
+    }
+
+    public void setSubCode(String subCode) {
+        this.subCode = subCode;
+    }
+
     public T getData() {
         return data;
     }
