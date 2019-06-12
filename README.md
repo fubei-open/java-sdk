@@ -175,7 +175,7 @@ public interface MyApi {
     - method：对应*具体Api文档*中的`接口名称`，必填
     - version：对应*公共参数*中`接口版本`，默认"1.0"，选填
     - format：对应*公共参数*中`接口格式`，默认"json"，选填
-    - signMethod：对应*公共参数*中`签名算法`，默认MD5，选填
+    - signMethod：对应*公共参数*中`签名算法`，默认"md5"，选填
 - 接口方法：
 
     Call<返回实体对象> 自定义函数名(@Body 参数实体 对象);
