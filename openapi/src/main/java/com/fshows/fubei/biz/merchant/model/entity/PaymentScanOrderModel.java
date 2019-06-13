@@ -15,93 +15,63 @@ import java.math.BigDecimal;
 public class PaymentScanOrderModel implements BaseModel {
 
     /**
-     * 第三方商户的订单号,确保唯一，前后不允许带空格
+     * 付呗订单号
      */
-    @JSONField(name = "merchant_order_sn")
-    private String merchantOrderSn;
+    @JSONField(name = "order_sn")
+    private String orderSn;
 
     /**
-     * 支付方式[微信1/支付宝2]
+     * 商户单号
      */
-    @JSONField(name = "type")
-    private Integer type;
+    @JSONField(name = "trade_no")
+    private String tradeNo;
 
     /**
-     * 订单金额(元)
-     */
-    @JSONField(name = "total_fee")
-    private BigDecimal totalFee;
-
-    /**
-     * 支付二维码
+     * 二维码原文
      */
     @JSONField(name = "qr_code")
     private String qrCode;
 
     /**
-     * 门店ID,当存在多个门店时，此字段必填
+     * 付呗系统的门店id
      */
     @JSONField(name = "store_id")
     private Integer storeId;
 
     /**
-     * 收银员ID
+     * 付呗系统的收银员id
      */
     @JSONField(name = "cashier_id")
     private Integer cashierId;
 
     /**
-     * 设备终端号
+     * 微信顾客支付授权的"open_id"
      */
-    @JSONField(name = "device_no")
-    private String deviceNo;
+    @JSONField(name = "user_id")
+    private String userId;
 
-    /**
-     * 对交易或商品的描述（微信上body值显示在商品，支付宝上body值显示在商品说明）
-     */
-    @JSONField(name = "body")
-    private String body;
-
-    /**
-     * 支付成功后回调链接
-     */
-    @JSONField(name = "call_back_url")
-    private String callBackUrl;
-
-    /**
-     * 硬件类型(90-127) ,非约定情况下该参数不需要传
-     */
-    @JSONField(name = "equipment_type")
-    private Integer equipmentType;
-
-    /**
-     * 附加字段
-     */
-    @JSONField(name = "attach")
-    private String attach;
-
-    public String getMerchantOrderSn() {
-        return merchantOrderSn;
+    public String getOrderSn() {
+        return orderSn;
     }
 
-    public void setMerchantOrderSn(String merchantOrderSn) {
-        this.merchantOrderSn = merchantOrderSn;
+    public void setOrderSn(String orderSn) {
+        this.orderSn = orderSn;
     }
 
-    public Integer getType() {
-        return type;
+    public String getTradeNo() {
+        return tradeNo;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setTradeNo(String tradeNo) {
+        this.tradeNo = tradeNo;
     }
 
-    public BigDecimal getTotalFee() {
-        return totalFee;
+    public String getQrCode() {
+        return qrCode;
     }
 
-    public void setTotalFee(BigDecimal totalFee) {
-        this.totalFee = totalFee;
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 
     public Integer getStoreId() {
@@ -120,51 +90,11 @@ public class PaymentScanOrderModel implements BaseModel {
         this.cashierId = cashierId;
     }
 
-    public String getDeviceNo() {
-        return deviceNo;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setDeviceNo(String deviceNo) {
-        this.deviceNo = deviceNo;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getCallBackUrl() {
-        return callBackUrl;
-    }
-
-    public void setCallBackUrl(String callBackUrl) {
-        this.callBackUrl = callBackUrl;
-    }
-
-    public Integer getEquipmentType() {
-        return equipmentType;
-    }
-
-    public void setEquipmentType(Integer equipmentType) {
-        this.equipmentType = equipmentType;
-    }
-
-    public String getAttach() {
-        return attach;
-    }
-
-    public void setAttach(String attach) {
-        this.attach = attach;
-    }
-
-    public String getQrCode() {
-        return qrCode;
-    }
-
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

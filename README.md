@@ -127,13 +127,30 @@ git checkout v${版本号}
 ## 接入说明
 ### 1、设置AppConfig
 在调用SDK之前，使用AppConfig设置appID，AppSecret。
-调用Api接口之前，需要全局设置开放平台的AppID、AppSecret，Spring项目可在@Configuration或者@PostConstruct中设置，Android项目可在Application.onCreate中设置。
 
+AppConfig::setAppId和AppConfig::setAppSecret
+
+调用Api接口之前，需要全局设置开放平台的AppID、AppSecret，Spring项目可在@Configuration或者@PostConstruct中设置，Android项目可在Application.onCreate中设置。
+#### AppID和AppSecret设置
 ```java
 AppConfig appConfig = AppConfig.getInstance();
 appConfig.setAppId("20180916120218114790");
 appConfig.setAppSecret("e4927152b7c18b0ddcc2648bdeabb452");
 ```
+
+#### 环境配置
+使用AppConfig::setEnv方法设置环境
+- OpenApiConstants.ENV_RELEASE：生产环境
+- OpenApiConstants.ENV_STABLE：开发环境
+```java
+AppConfig appConfig = AppConfig.getInstance();
+appConfig.setEnv(OpenApiConstants.ENV_RELEASE);
+```
+
+#### 接口连接、读取、写超时设置
+- AppConfig::setHttpConnectTimeout 连接超时，单位秒
+- AppConfig::setHttpReadTimeout 连接超时，单位秒
+- AppConfig::setHttpWriteTimeout 连接超时，单位秒
 
 ### 2、生成OpenApi的动态代理
 #### 接口调用说明
@@ -148,7 +165,7 @@ call.execute()
 异步方式调用：
 可在enqueue指定Excutor线程池
 ```java
-call.enqueue(...)
+call.enqueue()
 ```
 
 #### 接口定义规则

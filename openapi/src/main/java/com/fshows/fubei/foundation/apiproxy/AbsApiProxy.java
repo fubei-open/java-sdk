@@ -1,6 +1,10 @@
 package com.fshows.fubei.foundation.apiproxy;
 
+import com.annimon.stream.Optional;
+import com.annimon.stream.function.Supplier;
 import retrofit2.Retrofit;
+
+import java.util.concurrent.Executor;
 
 /**
  * Api代理抽象类
@@ -36,7 +40,7 @@ public abstract class AbsApiProxy {
     protected abstract String getBaseUrl();
 
     /**
-     *
+     * 创建接口的代理对象
      * @param clazz 接口类class
      * @param <T> 接口
      */

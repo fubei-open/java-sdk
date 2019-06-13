@@ -36,9 +36,9 @@ public class OpenApiUnitTest {
     @Before
     public void init() {
         AppConfig appConfig = AppConfig.getInstance();
-        appConfig.setAppId("20180916120218114790");
-        appConfig.setAppSecret("e4927152b7c18b0ddcc2648bdeabb452");
-        appConfig.setEnv(OpenApiConstants.ENV_STABLE);
+        appConfig.setAppId("");
+        appConfig.setAppSecret("");
+        appConfig.setEnv(OpenApiConstants.ENV_RELEASE);
     }
 
     @Test
@@ -106,7 +106,7 @@ public class OpenApiUnitTest {
     @Test
     public void testOrderClose() throws IOException {
         ParamPaymentOrderClose p = new ParamPaymentOrderClose();
-        p.setMerchantOrderSn("20170609152021917511");
+        p.setMerchantOrderSn("201906130001123100003");
         Response<PaymentCloseOrderModel> response = MerchantApiProxy.getInstance().create(MerchantOrderApi.class).orderClose(p).execute();
         PaymentCloseOrderModel data = response.body();
         System.out.println(data);
@@ -147,9 +147,9 @@ public class OpenApiUnitTest {
         param.setMerchantOrderSn(MerchantOrderIdUtil.genMerchantOrderId());
         param.setAttach("订单备注12345678");
         // 支付宝支付
-        param.setType(2);
+        param.setType(1);
         // 可调用testStoreQuery或的StoreId
-        param.setStoreId(1901801);
+        param.setStoreId(145827);
         param.setBody("测试商品001");
         param.setTotalFee(new BigDecimal(0.1));
         PaymentScanOrderModel responseModel = MerchantApiProxy.getInstance().create(MerchantPaymentApi.class).orderScan(param).execute().body();
@@ -164,13 +164,14 @@ public class OpenApiUnitTest {
     @Test
     public void testSwipeOrder() throws IOException {
         ParamPaymentOrderSwipe param = new ParamPaymentOrderSwipe();
-        param.setMerchantOrderSn("201906130001123100003");
+        param.setMerchantOrderSn(MerchantOrderIdUtil.genMerchantOrderId());
         param.setAttach("订单备注12345678");
         // 支付宝支付
-        param.setType(2);
-        param.setAuthCode("285251616763663243");
+        param.setType(1);
+        param.setAuthCode("134510811685144057");
+
         // 可调用testStoreQuery或的StoreId
-        param.setStoreId(1901801);
+        param.setStoreId(145827);
         param.setBody("测试商品001");
         param.setTotalFee(new BigDecimal(0.1));
         PaymentSwipeOrderModel responseModel = MerchantApiProxy.getInstance().create(MerchantPaymentApi.class).orderSwipe(param).execute().body();

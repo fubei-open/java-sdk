@@ -1,1 +1,6 @@
-time	string	是	50	服务器时间
+order_sn	string	是	32	付呗订单号
+trade_no	string	是	32	商户单号
+qr_code	string	是	255	二维码原文
+store_id	int	是	16	付呗系统的门店id
+cashier_id	int	否	16	付呗系统的收银员id
+user_id	string	否	32	微信顾客支付授权的"open_id"
