@@ -1,10 +1,6 @@
 package com.fshows.fubei.foundation.apiproxy;
 
-import com.annimon.stream.Optional;
-import com.annimon.stream.function.Supplier;
 import retrofit2.Retrofit;
-
-import java.util.concurrent.Executor;
 
 /**
  * Api代理抽象类
@@ -12,7 +8,7 @@ import java.util.concurrent.Executor;
  * @author John (linwei@fshows.com)
  * @version $Id ApiProxy.java, v1.0 2019-06-11 16:32 John Exp$
  */
-public abstract class AbsApiProxy {
+public abstract class AbstractApiProxy {
     /**
      * Retrofit
      */
@@ -21,7 +17,7 @@ public abstract class AbsApiProxy {
     /**
      * 构造函数
      */
-    AbsApiProxy() {
+    AbstractApiProxy() {
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder();
         initRetrofit(retrofitBuilder);
         retrofit = retrofitBuilder.build();

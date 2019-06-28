@@ -28,6 +28,16 @@ public interface OpenApiConstants {
     String GATEWAY = "gateway";
 
     /**
+     * 网关：代理商Api
+     */
+    String GATEWAY_AGENT = "gateway/agent";
+
+    /**
+     * 网关
+     */
+    String GATEWAY_CATE = "gateway/cate";
+
+    /**
      * 成功的结果码：200
      */
     int RESULT_CODE_SUCCESS = 200;

@@ -34,6 +34,12 @@ public class RequestParam implements BaseModel {
     private String appId = "";
 
     /**
+     * 付呗代理商平台的服务商sn
+     */
+    @JSONField(name = "vendor_sn")
+    private String vendorSn = "";
+
+    /**
      * 接口名称
      */
     @JSONField(name = "method")
@@ -137,5 +143,13 @@ public class RequestParam implements BaseModel {
 
     public void setBizContent(String bizContent) {
         this.bizContent = bizContent;
+    }
+
+    public String getVendorSn() {
+        return vendorSn;
+    }
+
+    public void setVendorSn(String vendorSn) {
+        this.vendorSn = vendorSn;
     }
 }

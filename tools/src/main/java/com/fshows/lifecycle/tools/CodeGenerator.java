@@ -84,6 +84,7 @@ public class CodeGenerator {
         String type;
         switch (rawType.toLowerCase()) {
             case "int":
+            case "integer":
                 type = Integer.class.getSimpleName();
                 break;
 
@@ -97,6 +98,7 @@ public class CodeGenerator {
 
             case "float":
             case "decimal":
+            case "bigdecimal":
                 type = BigDecimal.class.getSimpleName();
                 break;
 

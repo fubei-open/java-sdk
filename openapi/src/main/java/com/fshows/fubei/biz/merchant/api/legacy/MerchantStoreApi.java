@@ -1,5 +1,6 @@
 package com.fshows.fubei.biz.merchant.api.legacy;
 
+import com.fshows.fubei.biz.merchant.model.entity.CateStoreInfoModel;
 import com.fshows.fubei.biz.merchant.model.entity.CreateOrUpdateStoreModel;
 import com.fshows.fubei.biz.merchant.model.param.*;
 import com.fshows.fubei.biz.merchant.model.BizResult;
@@ -10,7 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
- * 订单门店接口
+ * 门店接口
  *
  * @author John (linwei@fshows.com)
  * @version $Id MerchantStoreApi.java, v1.0 2019-06-06 20:04 John Exp$
@@ -51,13 +52,23 @@ public interface MerchantStoreApi {
     /**
      * 门店修改
      * http://docs.51fubei.com/open-api/business/methods/men-dian-xiu-gai-jie-kou.html
-     *
+     * @deprecated 已过时，请使用{{@link #updateStoreInfo(ParamCateStoreInfo)}代替}
      * @param param 参数
      * @return 响应实体
      */
     @POST(OpenApiConstants.GATEWAY)
     @FubeiOpenApi(method = "openapi.store.update")
+    @Deprecated
     Call<CreateOrUpdateStoreModel> updateStore(@Body ParamStoreUpdate param);
+
+    /**
+     * 门店信息修改
+     * @param param 参数
+     * @return 门店响应参数
+     */
+    @POST(OpenApiConstants.GATEWAY_CATE)
+    @FubeiOpenApi(method = "openapi.cate.store.info")
+    Call<CateStoreInfoModel> updateStoreInfo(@Body ParamCateStoreInfo param);
 
     /**
      * 收银员ID查询接口

@@ -1,6 +1,7 @@
 package com.fshows.fubei.foundation.annotation;
 
 import com.fshows.fubei.foundation.constants.OpenApiConstants;
+import com.fshows.fubei.foundation.enums.OpenApiType;
 
 import java.lang.annotation.*;
 
@@ -22,4 +23,6 @@ public @interface FubeiOpenApi {
     String format() default OpenApiConstants.DATA_FORMAT_JSON;
 
     String signMethod() default OpenApiConstants.HASH_METHOD_MD5;
+
+    OpenApiType openApiType() default OpenApiType.MERCHANT;
 }

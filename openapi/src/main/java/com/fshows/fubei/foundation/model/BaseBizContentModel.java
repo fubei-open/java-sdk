@@ -1,6 +1,7 @@
 package com.fshows.fubei.foundation.model;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 /**
  * 业务参数Model的基类
@@ -12,6 +13,6 @@ import com.alibaba.fastjson.JSON;
 public class BaseBizContentModel implements BaseModel {
 
     public String toJson() {
-        return JSON.toJSONString(this);
+        return JSON.toJSONString(this, SerializerFeature.WriteEnumUsingToString);
     }
 }

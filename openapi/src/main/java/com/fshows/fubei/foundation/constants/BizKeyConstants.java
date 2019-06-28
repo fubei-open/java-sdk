@@ -13,6 +13,11 @@ public interface BizKeyConstants {
     String APP_ID = "app_id";
 
     /**
+     * 商户ID
+     */
+    String VENDOR_SN = "vendor_sn";
+
+    /**
      * 接口名称
      */
     String METHOD = "method";

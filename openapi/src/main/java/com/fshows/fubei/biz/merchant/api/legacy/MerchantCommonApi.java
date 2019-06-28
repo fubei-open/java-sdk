@@ -8,7 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
- * 支付类目API
+ * 其他通用接口
  *
  * @author John (linwei@fshows.com)
  * @version $Id MerchantCommonApi.java, v1.0 2019-06-10 22:39 John Exp$

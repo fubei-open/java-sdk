@@ -1,8 +1,11 @@
 package com.fshows.fubei.foundation.utils;
 
+import com.annimon.stream.function.Supplier;
+import com.annimon.stream.function.ThrowableSupplier;
 import com.fshows.fubei.foundation.constants.BizKeyConstants;
 import com.fshows.fubei.foundation.model.RequestParam;
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import com.google.common.hash.Hashing;
 
@@ -55,21 +58,33 @@ public class SignUtil {
 
     /**
      * 将请求参数对象转为红黑树映射
+     * 如果中途发生异常，则会返回空对象
      *
      * @param param 参数对象
      * @return 映射
      */
     @Nonnull
-    private static Map<String, String> mapper(RequestParam param) {
-        Map<String, String> mapper = Maps.newTreeMap();
-        mapper.put(BizKeyConstants.APP_ID, param.getAppId());
-        mapper.put(BizKeyConstants.METHOD, param.getMethod());
-        mapper.put(BizKeyConstants.FORMAT, param.getFormat());
-        mapper.put(BizKeyConstants.SIGN_METHOD, param.getSignMethod());
-        mapper.put(BizKeyConstants.NONCE, param.getNonce());
-        mapper.put(BizKeyConstants.VERSION, param.getVersion());
-        mapper.put(BizKeyConstants.BIZ_CONTENT, param.getBizContent());
-        return mapper;
+    private static Map<String, String> mapper(final RequestParam param) {
+        return Supplier.Util.safe(new ThrowableSupplier<Map<String, String>, Throwable>() {
+
+            @Override
+            public Map<String, String> get() {
+                Map<String, String> mapper = Maps.newTreeMap();
+                if (!Strings.isNullOrEmpty(param.getAppId())) {
+                    mapper.put(BizKeyConstants.APP_ID, param.getAppId());
+                }
+                if (!Strings.isNullOrEmpty(param.getVendorSn())) {
+                    mapper.put(BizKeyConstants.VENDOR_SN, param.getVendorSn());
+                }
+                mapper.put(BizKeyConstants.METHOD, param.getMethod());
+                mapper.put(BizKeyConstants.FORMAT, param.getFormat());
+                mapper.put(BizKeyConstants.SIGN_METHOD, param.getSignMethod());
+                mapper.put(BizKeyConstants.NONCE, param.getNonce());
+                mapper.put(BizKeyConstants.VERSION, param.getVersion());
+                mapper.put(BizKeyConstants.BIZ_CONTENT, param.getBizContent());
+                return mapper;
+            }
+        }, Maps.<String, String>newTreeMap()).get();
     }
 }
         

@@ -32,6 +32,16 @@ public class AppConfig {
     private String appSecret;
 
     /**
+     * vendorSn 商户Id
+     */
+    private String vendorSn;
+
+    /**
+     * 商户Secret
+     */
+    private String vendorSecret;
+
+    /**
      * api环境
      */
     private int env;
@@ -50,6 +60,11 @@ public class AppConfig {
      * Http上行写入超时时间，单位：秒
      */
     private int httpWriteTimeout = 30;
+
+    /**
+     * 设置debug模式，debug模式会打印完整的网络请求BODY
+     */
+    private boolean debug = false;
 
     public int getEnv() {
         return env;
@@ -97,5 +112,29 @@ public class AppConfig {
 
     public void setHttpWriteTimeout(int httpWriteTimeout) {
         this.httpWriteTimeout = httpWriteTimeout;
+    }
+
+    public String getVendorSn() {
+        return vendorSn;
+    }
+
+    public void setVendorSn(String vendorSn) {
+        this.vendorSn = vendorSn;
+    }
+
+    public String getVendorSecret() {
+        return vendorSecret;
+    }
+
+    public void setVendorSecret(String vendorSecret) {
+        this.vendorSecret = vendorSecret;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
     }
 }

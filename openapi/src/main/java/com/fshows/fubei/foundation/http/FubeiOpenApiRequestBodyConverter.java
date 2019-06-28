@@ -41,7 +41,7 @@ public class FubeiOpenApiRequestBodyConverter<T> implements Converter<T, Request
     /**
      *JSON序列化特性
      */
-    private SerializerFeature[] serializerFeatures = SerializerFeature.EMPTY;
+    private SerializerFeature[] serializerFeatures = new SerializerFeature[] { SerializerFeature.WriteEnumUsingToString };
     /**
      * 请求中的lifecycleApi标注
      */
@@ -70,16 +70,32 @@ public class FubeiOpenApiRequestBodyConverter<T> implements Converter<T, Request
             param = RequestParam.create(new BaseBizContentModel());
         }
 
+        String secret = "";
         // 设置必须参数
         if (Optional.ofNullable(fubeiOpenApi).isPresent()) {
             param.setMethod(fubeiOpenApi.method());
             param.setFormat(fubeiOpenApi.format());
             param.setVersion(fubeiOpenApi.version());
+            switch (fubeiOpenApi.openApiType()) {
+                // 代理商级api，使用vendor_sn,使用vendor_secret移除app_id
+                case AGENT:
+                    param.setVendorSn(AppConfig.getInstance().getVendorSn());
+                    param.setAppId(null);
+                    secret = AppConfig.getInstance().getVendorSecret();
+                    break;
+
+                // 商户级api，使用vendor_sn,使用vendor_secret移除app_id
+                case MERCHANT:
+                default:
+                    param.setVendorSn(null);
+                    param.setAppId(AppConfig.getInstance().getAppId());
+                    secret = AppConfig.getInstance().getAppSecret();
+                    break;
+            }
         }
-        param.setAppId(AppConfig.getInstance().getAppId());
         param.setNonce(RandomStringUtil.randomAlphabet(RANDOM_BIT));
         // 签名
-        SignUtil.sign(param, AppConfig.getInstance().getAppSecret());
+        SignUtil.sign(param, secret);
         byte[] content = JSON.toJSONBytes(param, serializeConfig, serializerFeatures);
         return RequestBody.create(MEDIA_TYPE, content);
     }

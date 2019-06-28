@@ -10,8 +10,7 @@ import java.util.Map;
  */
 public class SignUtil {
 
-    public  static String createSign(Map map,String secret){
-
+    public static String createSign(Map map,String secret){
         StringBuffer sf = new StringBuffer();
         if (map != null && map.keySet().size() > 0) {
             Iterator iterator = map.entrySet().iterator();
@@ -24,8 +23,7 @@ public class SignUtil {
         String s = sf.toString();
         //移除最后一个&，如果是md5加密，还要加上secret
         String s2 = s.substring(0, s.length() - 1)+secret;
-        String sign = DigestUtils.md5Hex(s2).toString().toUpperCase();
-
+        String sign = DigestUtils.md5Hex(s2).toUpperCase();
         return sign;
 
     }
