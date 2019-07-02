@@ -152,6 +152,8 @@ public class ParamMerchantSettle extends BaseBizContentModel {
 
     /**
      * 门店经营许可类型
+     * 1: 营业执照
+     * 2: 证明函
      */
     @JSONField(name = "license_type")
     private Integer licenseType;

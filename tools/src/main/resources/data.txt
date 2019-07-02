@@ -1,6 +1,4 @@
-merchant_id	Integer	是		付呗商户号
-merchant_code	String	是		商户号
-store_id	Integer	是		门店ID
-merchant_status	Integer	是		商户认证状态
-store_status	Integer	是		门店状态
-error_msg	String	是		错误信息
+merchant_id	Integer	是	1	付呗商户号	付呗商户号
+merchant_code	String	是	1	商户号	接入方商户号
+modify_flag	Boolean	是	1	是否修改成功
+resp_message	String	是	1	返回信息	具体信息

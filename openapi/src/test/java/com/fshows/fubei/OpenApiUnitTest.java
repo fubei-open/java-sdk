@@ -289,7 +289,7 @@ public class OpenApiUnitTest {
         // 客服电话 若该字段为空，则取值contact_phone
         param.setServicePhone("15024446523");
         // 电子邮箱 商户邮箱信息
-        param.setEmail("657173240@qq.com");
+        param.setEmail("xxxxxxxxxxxxx@qq.com");
         // 品类id 门店品类列表 参见"商户类目"中category_id值
         // http://docs.51fubei.com/agent-api/other/category_v2.html
         param.setUnityCategoryId(20);
@@ -300,14 +300,14 @@ public class OpenApiUnitTest {
         // 身份证号
         param.setIdCardNo("330105198505236191");
         // 身份证正面照地址(国徽面）
-        param.setIdCardFrontPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setIdCardFrontPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxx.png");
         // 身份证反面照地址（人像面）
-        param.setIdCardBackPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setIdCardBackPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxx.png");
         // 银行卡号
-        param.setBankCardNo("6225800521774785");
+        param.setBankCardNo("6217856200027621676");
         // 银行卡照片地址
         // 账户类型account_type为2(企业) 填企业账户开户许可证
-        param.setBankCardImage("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setBankCardImage("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxx.png!water");
         // 银行预留手机号
         param.setBankCellPhone("15024446523");
         // 所属银行编码, 通过“查询开户银行接口”获取 AgentApi.queryBanks()
@@ -319,14 +319,14 @@ public class OpenApiUnitTest {
         // 门店名称
         param.setStoreName("shencw的西瓜店");
         // 门店电话
-        param.setStorePhone("15067420540");
+        param.setStorePhone("15024446523");
         // 编码参考"全国省市自治区编号"中code值 http://docs.51fubei.com/agent-api/other/areas_v2.html
         // 省份编码
         param.setProvinceCode("330000");
         // 城市编码
         param.setCityCode("330100");
         // 区域编码
-        param.setAreaCode("330105");
+        param.setAreaCode("330104");
         // 详细地址s
         param.setStreetAddress("丰盛九玺");
         // 纬度
@@ -338,10 +338,10 @@ public class OpenApiUnitTest {
         param.setLicenseType(1);
         // 营业执照/证明函照片地址
         // 如果门店经营许可类型为1:必填 营业执照照片 2:选填 证明函照片
-        param.setLicensePhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setLicensePhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxxxxxxxxxxxxx.png");
         // 手持身份证照片
         // 如果门店经营许可类型为1(营业执照):无需填写 2(证明函):必填
-        param.setHandHoldIdCardPic("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setHandHoldIdCardPic("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxxxxxxs.png");
         // 营业执照名称
         // 门店经营许可类型为1(营业执照)则必填
         param.setLicenseName("");
@@ -357,20 +357,20 @@ public class OpenApiUnitTest {
         // 格式：YYYY-MM-DD
         param.setLicenseTimeEnd("2020-01-01");
         // 经营许可证图片地址
-        param.setOperatingLicensePhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setOperatingLicensePhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
         // 门头照片
-        param.setStoreFrontImgUrl("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setStoreFrontImgUrl("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxxx.png");
         // 门店店内环境照片
-        param.setStoreEnvPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setStoreEnvPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
         // 门店收银台照片
-        param.setStoreCashPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setStoreCashPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
         // 其他照片
-        param.setOtherPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/094332587c59430f928327e17c0cd428.png");
+        param.setOtherPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
         // 备注
         param.setRemark("我是一条备注");
         // 以下费率设置，只允许有调整费率权限情况下传值，否则会报错
         // 支付宝商户终端费率
-        // param.setAlipayFeeRate("3.8");
+         param.setAlipayFeeRate("");
         // 微信商户终端费率
         // param.setWxFeeRateFloat("3.8");
         MerchantIncomeModel responseModel = FubeiOpenApiProxy.getInstance().create(AgentApi.class).merchantIncome(param).execute().body();

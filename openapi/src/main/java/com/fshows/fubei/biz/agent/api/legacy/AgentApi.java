@@ -112,4 +112,24 @@ public interface AgentApi {
     @POST(OpenApiConstants.GATEWAY_AGENT)
     @FubeiOpenApi(method = "openapi.agent.merchant.modify", openApiType = OpenApiType.AGENT)
     Call<MerchantIncomeModel> merchantModify(@Body ParamMerchantSettle param);
+
+    /**
+     * 商户费率修改
+     * http://docs.51fubei.com/agent-api/newmethods/adjustRate.html
+     * @param param 参数
+     * @return 费率修改结果
+     */
+    @POST(OpenApiConstants.GATEWAY_AGENT)
+    @FubeiOpenApi(method = "openapi.agent.merchant.adjustrate", openApiType = OpenApiType.AGENT)
+    Call<MerchantAdjustRateModel> merchantAdjustRate(@Body ParamMerchantAdjustRate param);
+
+    /**
+     * 商户结算卡信息修改
+     * http://docs.51fubei.com/agent-api/newmethods/updateBankCard.html
+     * @param param 参数
+     * @return 结算卡修改结果
+     */
+    @POST(OpenApiConstants.GATEWAY_AGENT)
+    @FubeiOpenApi(method = "openapi.agent.merchant.update.bank.card", openApiType = OpenApiType.AGENT)
+    Call<BankCardUpdateModel> updateBankCard(@Body ParamBankUpdate param);
 }
