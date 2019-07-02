@@ -24,7 +24,7 @@ public class MerchantStatusModel implements BaseModel {
      * 认证状态
      */
     @JSONField(name = "merchant_status")
-    private Object merchantStatus;
+    private Integer merchantStatus;
 
     /**
      * 商户状态错误信息
@@ -46,11 +46,11 @@ public class MerchantStatusModel implements BaseModel {
         this.merchantCode = merchantCode;
     }
 
-    public Object getMerchantStatus() {
+    public Integer getMerchantStatus() {
         return merchantStatus;
     }
 
-    public void setMerchantStatus(Object merchantStatus) {
+    public void setMerchantStatus(Integer merchantStatus) {
         this.merchantStatus = merchantStatus;
     }
 

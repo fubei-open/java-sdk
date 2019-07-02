@@ -10,10 +10,7 @@ import com.fshows.fubei.biz.merchant.api.legacy.MerchantOrderApi;
 import com.fshows.fubei.biz.merchant.api.legacy.MerchantPaymentApi;
 import com.fshows.fubei.biz.merchant.api.legacy.MerchantStoreApi;
 import com.fshows.fubei.biz.merchant.model.BizResult;
-import com.fshows.fubei.biz.merchant.model.entity.PaymentCloseOrderModel;
-import com.fshows.fubei.biz.merchant.model.entity.PaymentScanOrderModel;
-import com.fshows.fubei.biz.merchant.model.entity.PaymentSwipeOrderModel;
-import com.fshows.fubei.biz.merchant.model.entity.ServerTimeModel;
+import com.fshows.fubei.biz.merchant.model.entity.*;
 import com.fshows.fubei.biz.merchant.model.param.*;
 import com.fshows.fubei.foundation.apiproxy.FubeiOpenApiProxy;
 import com.fshows.fubei.foundation.constants.OpenApiConstants;
@@ -58,13 +55,15 @@ public class OpenApiUnitTest {
     @Before
     public void init() {
         AppConfig appConfig = AppConfig.getInstance();
-        // TODO: 填入以下内容
+        // TODO: 商户级OpenApi接口调用，请填写以下设置
         // 设置商户级AppId和AppSecret，设置完成之后，可使用 biz.merchant.api.legacy接口
         appConfig.setAppId("");
         appConfig.setAppSecret("");
+        // TODO: 代理商级OpenApi接口调用，请填写以下设置
         // 设置代理商级VendorSn和VendorSecret，设置完成之后，可使用 biz.agent.api.legacy接口
         appConfig.setVendorSn("");
         appConfig.setVendorSecret("");
+        // 设置调用接口的环境
         appConfig.setEnv(OpenApiConstants.ENV_RELEASE);
         appConfig.setDebug(true);
     }
@@ -374,6 +373,65 @@ public class OpenApiUnitTest {
         // 微信商户终端费率
         // param.setWxFeeRateFloat("3.8");
         MerchantIncomeModel responseModel = FubeiOpenApiProxy.getInstance().create(AgentApi.class).merchantIncome(param).execute().body();
+        System.out.println(objectToString(responseModel));
+    }
+
+    /**
+     * 门店信息修改
+     * http://localhost:4000/newmethods/storeInfoModify.html
+     * @throws IOException
+     */
+    @Test
+    public void testChangeStoreInfo() throws IOException {
+        ParamCateStoreInfo param = new ParamCateStoreInfo();
+        param.setMerchantId(1);
+        param.setStoreId(1);
+        // 门店名称
+        param.setStoreName("xxx的水果店");
+        param.setStreetAddress("杭州万塘路18号黄龙时代广场B座");
+        // 门店地址经度
+        param.setLongitude("30.273");
+        // 门店地址纬度
+        param.setLatitude("120.124");
+        // 省份编码
+        param.setProvinceCode("330000");
+        // 城市编码
+        param.setCityCode("330100");
+        // 区域编码
+        param.setAreaCode("330104");
+        // 门店电话
+        param.setStorePhone("15024446523");
+        // 品类Id
+        param.setUnityCategoryId(12);
+        // 门头照片
+        param.setStoreFrontImgUrl("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
+        // 门店店内环境照片
+        param.setStoreEnvPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
+        // 门店收银台照片
+        param.setStoreCashPhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
+        // 门店经营许可类型
+        param.setLicenseType(1);
+        // 手持身份证照片
+        param.setHandHoldIdCardPic("");
+        // 营业执照名称
+        param.setLicenseName("xxxx有限公司");
+        // 营业执照号
+        param.setLicenseId("aaaaaaaaaaaaaaaaaaaaaaaa");
+        // 营业执照有效期类型
+        param.setLicenseType(1);
+        // 营业执照有效期开始时间
+        param.setLicenseTimeBegin("2019-01-01");
+        // 营业执照有效期结束时间
+        param.setLicenseTimeEnd("2019-01-01");
+        // 品牌名称
+        param.setBrandName("xxxx");
+        // 经营许可证图片地址
+        param.setOperatingLicensePhoto("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
+        // 其他照片
+        param.setOtherPic1("https://bplan-security-pic.oss-cn-hangzhou.aliyuncs.com/upload/20190628/xxxxxxxxxx.png");
+        // 备注
+        param.setRemark("");
+        CateStoreInfoModel responseModel = FubeiOpenApiProxy.getInstance().create(AgentApi.class).updateStoreInfo(param).execute().body();
         System.out.println(objectToString(responseModel));
     }
 
