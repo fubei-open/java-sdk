@@ -5,10 +5,7 @@ import com.fshows.fubei.biz.agent.api.legacy.AgentApi;
 import com.fshows.fubei.biz.agent.enums.ImageBusType;
 import com.fshows.fubei.biz.agent.model.entity.*;
 import com.fshows.fubei.biz.agent.model.param.*;
-import com.fshows.fubei.biz.merchant.api.legacy.MerchantCommonApi;
-import com.fshows.fubei.biz.merchant.api.legacy.MerchantOrderApi;
-import com.fshows.fubei.biz.merchant.api.legacy.MerchantPaymentApi;
-import com.fshows.fubei.biz.merchant.api.legacy.MerchantStoreApi;
+import com.fshows.fubei.biz.merchant.api.legacy.*;
 import com.fshows.fubei.biz.merchant.model.BizResult;
 import com.fshows.fubei.biz.merchant.model.entity.*;
 import com.fshows.fubei.biz.merchant.model.param.*;
@@ -102,8 +99,8 @@ public class OpenApiUnitTest {
     @Test
     public void testRetrofit() {
 //        String baseUrl = "http://47.97.155.209:55734/";
-        String baseUrl = "https://shq-api-test.51fubei.com/";
-//        String baseUrl = "https://shq-api.51fubei.com/";
+//        String baseUrl = "https://shq-api-test.51fubei.com/";
+        String baseUrl = "https://shq-api.51fubei.com/";
         Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
                 .addConverterFactory(new FubeiOpenApiConverterFactory())
                 .build();
@@ -125,6 +122,20 @@ public class OpenApiUnitTest {
         Response<ServerTimeModel> response = FubeiOpenApiProxy.getInstance().create(MerchantCommonApi.class).getServerTime(new Object()).execute();
         System.out.println(objectToString(response.body()));
     }
+
+    /**
+     * 微信授权
+     */
+    @Test
+    public void testWxAuth() throws IOException {
+        ParamPaymentAuth param = new ParamPaymentAuth();
+        param.setStoreId(1);
+        param.setUrl("https://cn.bing.com");
+        Response<AuthWechatOfficialAccountsModel> response = FubeiOpenApiProxy.getInstance().create(MerchantAuthApi.class).wechatOfficialAccountAuth(param).execute();
+        AuthWechatOfficialAccountsModel data = response.body();
+        System.out.println(objectToString(data));
+    }
+
 
     /**
      * 订单关闭

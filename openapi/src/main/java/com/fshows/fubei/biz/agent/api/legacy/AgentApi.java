@@ -68,7 +68,7 @@ public interface AgentApi {
      * @param param 参数
      * @return 门店响应参数
      */
-    @POST(OpenApiConstants.GATEWAY_CATE)
+    @POST(OpenApiConstants.GATEWAY_AGENT)
     @FubeiOpenApi(method = "openapi.cate.store.info", openApiType = OpenApiType.AGENT)
     Call<CateStoreInfoModel> updateStoreInfo(@Body ParamCateStoreInfo param);
 
