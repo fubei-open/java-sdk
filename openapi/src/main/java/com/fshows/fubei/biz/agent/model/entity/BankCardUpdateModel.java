@@ -28,7 +28,7 @@ public class BankCardUpdateModel implements BaseModel {
      * 是否修改成功
      */
     @JSONField(name = "modify_flag")
-    private Object modifyFlag;
+    private Integer modifyFlag;
 
     /**
      * 返回信息
@@ -52,11 +52,11 @@ public class BankCardUpdateModel implements BaseModel {
         this.merchantCode = merchantCode;
     }
 
-    public Object getModifyFlag() {
+    public Integer getModifyFlag() {
         return modifyFlag;
     }
 
-    public void setModifyFlag(Object modifyFlag) {
+    public void setModifyFlag(Integer modifyFlag) {
         this.modifyFlag = modifyFlag;
     }
 

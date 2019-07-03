@@ -83,13 +83,13 @@ public class MerchantInfoModel implements BaseModel {
      * 进件状态
      */
     @JSONField(name = "income_status")
-    private Object incomeStatus;
+    private Integer incomeStatus;
 
     /**
      * 认证状态
      */
     @JSONField(name = "auth_status")
-    private Object authStatus;
+    private Integer authStatus;
 
     /**
      * 账户类型
@@ -263,19 +263,19 @@ public class MerchantInfoModel implements BaseModel {
         this.streetAddress = streetAddress;
     }
 
-    public Object getIncomeStatus() {
+    public Integer getIncomeStatus() {
         return incomeStatus;
     }
 
-    public void setIncomeStatus(Object incomeStatus) {
+    public void setIncomeStatus(Integer incomeStatus) {
         this.incomeStatus = incomeStatus;
     }
 
-    public Object getAuthStatus() {
+    public Integer getAuthStatus() {
         return authStatus;
     }
 
-    public void setAuthStatus(Object authStatus) {
+    public void setAuthStatus(Integer authStatus) {
         this.authStatus = authStatus;
     }
 
