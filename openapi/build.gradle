@@ -13,3 +13,16 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            println "${project.group}:${project.name}:${project.version}"
+            groupId project.group
+            artifactId project.name
+            version project.version
+            //若是war包，就写components.web,若是jar包，就写components.java
+            from components.java
+        }
+    }
+}
