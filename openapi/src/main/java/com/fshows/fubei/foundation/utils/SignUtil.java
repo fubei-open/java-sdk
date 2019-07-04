@@ -2,12 +2,15 @@ package com.fshows.fubei.foundation.utils;
 
 import com.annimon.stream.function.Supplier;
 import com.annimon.stream.function.ThrowableSupplier;
+import com.fshows.fubei.AppConfig;
 import com.fshows.fubei.foundation.constants.BizKeyConstants;
 import com.fshows.fubei.foundation.model.RequestParam;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import com.google.common.hash.Hashing;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.nio.charset.Charset;
@@ -20,6 +23,8 @@ import java.util.Map;
  * @version $Id SignUtil.java, v1.0 2019-06-06 10:43 John Exp$
  */
 public class SignUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SignUtil.class);
+
     /**
      * 对参数请求进行签名
      * 签名规则见：http://docs.51fubei.com/open-api/business/sign.html
@@ -32,6 +37,9 @@ public class SignUtil {
         String baseStr = baseString(requestParam, appSecret);
         // 获得BaseString后，对字符串做MD5 hash并转为大写
         //noinspection UnstableApiUsage
+        if (AppConfig.getInstance().isDebug()) {
+            LOGGER.warn("待签名字符串[BaseString]: {}", baseStr);
+        }
         String sig = Hashing.md5().hashString(baseStr, Charset.forName("utf-8")).toString().toUpperCase();
         requestParam.setSign(sig);
     }

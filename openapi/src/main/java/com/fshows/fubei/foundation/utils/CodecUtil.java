@@ -35,4 +35,14 @@ public class CodecUtil {
     public static String byteToBase64(byte[] binary) {
         return BaseEncoding.base64().encode(binary);
     }
+
+    /**
+     * base64转为数组
+     * @param base64 base64字符串
+     * @return byte数组
+     */
+    public static void base64ToFile(String base64, File file) throws IOException {
+        byte[] in = BaseEncoding.base64().decode(base64);
+        Files.write(in, file);
+    }
 }
