@@ -32,6 +32,12 @@ public class PaymentQueryOrderModel implements BaseModel {
     private String tradeNo;
 
     /**
+     * 平台方订单号
+     */
+    @JSONField(name = "platform_order_no")
+    private String platformOrderNo;
+
+    /**
      * 交易状态, USERPAYING :待支付; SUCCESS:支付成功；REVOKED：已撤销；REVOKING：撤销中；REVOKED_ERROR：撤销失败
      */
     @JSONField(name = "trade_state")
@@ -263,5 +269,13 @@ public class PaymentQueryOrderModel implements BaseModel {
 
     public void setUserLogonId(String userLogonId) {
         this.userLogonId = userLogonId;
+    }
+
+    public String getPlatformOrderNo() {
+        return platformOrderNo;
+    }
+
+    public void setPlatformOrderNo(String platformOrderNo) {
+        this.platformOrderNo = platformOrderNo;
     }
 }

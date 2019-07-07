@@ -9,6 +9,7 @@ import com.fshows.fubei.foundation.model.BaseBizContentModel;
  * @author John (linwei@fshows.com)
  * @version $Id PaymentH5PayOrderModel.java, v1.0 2019-06-10 21:26 John Exp$
  */
+@SuppressWarnings("unused")
 public class PaymentH5PayOrderModel extends BaseBizContentModel {
     /**
      * 预支付订单号
@@ -45,6 +46,12 @@ public class PaymentH5PayOrderModel extends BaseBizContentModel {
      */
     @JSONField(name = "user_id")
     private String userId;
+
+    /**
+     * 唤起支付时的签名包
+     */
+    @JSONField(name = "sign_params")
+    private PaymentH5PaySignParamsModel signParams;
 
     public String getPrepayId() {
         return prepayId;
@@ -92,5 +99,13 @@ public class PaymentH5PayOrderModel extends BaseBizContentModel {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public PaymentH5PaySignParamsModel getSignParams() {
+        return signParams;
+    }
+
+    public void setSignParams(PaymentH5PaySignParamsModel signParams) {
+        this.signParams = signParams;
     }
 }

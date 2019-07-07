@@ -63,7 +63,9 @@ public interface AgentApi {
 
     /**
      * 门店信息修改
-     * 备注：该参数为商户级参数，依赖AppId和AppSecret
+     * 备注：该接口同时支持商户级和代理商级调用
+     * 代理商级调用：需要vendor_sn和vendor_secret
+     * 商户级调用：需要app_id和app_secret
      * http://docs.51fubei.com/agent-api/newmethods/storeInfoModify.html
      * @param param 参数
      * @return 门店响应参数
