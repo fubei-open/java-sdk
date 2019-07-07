@@ -1,4 +1,6 @@
-merchant_id	Integer	是	1	付呗商户号	付呗商户号
-merchant_code	String	是	1	商户号	接入方商户号
-modify_flag	Boolean	是	1	是否修改成功
-resp_message	String	是	1	返回信息	具体信息
+appId	string	是	16	商户注册具有支付权限的公众号成功后即可获得
+timeStamp	string	是	32	当前的时间，自1970年以来的秒数
+nonceStr	string	是	32	随机字符串，不长于32位
+package	string	是	128	统一下单接口返回的prepay_id参数值，提交格式如：prepay_id=123456
+signType	string	是	32	签名类型，默认为MD5
+paySign	string	是	64	签名
