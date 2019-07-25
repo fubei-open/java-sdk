@@ -28,7 +28,7 @@ public class MerchantIncomeModel implements BaseModel {
      * 商户APPID
      */
     @JSONField(name = "app_id")
-    private Integer appId;
+    private String appId;
 
     /**
      * 商户秘钥
@@ -76,11 +76,11 @@ public class MerchantIncomeModel implements BaseModel {
         this.merchantCode = merchantCode;
     }
 
-    public Integer getAppId() {
+    public String getAppId() {
         return appId;
     }
 
-    public void setAppId(Integer appId) {
+    public void setAppId(String appId) {
         this.appId = appId;
     }
 
