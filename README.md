@@ -263,4 +263,4 @@ protected OkHttpClient getOkHttpClient() {
 调用示例位于项目openapi/src/test/java/com/fshows/fubei/OpenApiUnitTest.java中，其中列举了几个接口的调用方式，可使用JUnit方式直接执行查看结果
 
 #### 问题与反馈
-目前SDK处于Alpha版本开发中，难免会出现设计不完善，出入参错误的情况。如发现任何错误，可联系相关技术人员进行反馈
+如发现任何错误，可联系相关技术人员进行反馈。
