@@ -60,7 +60,7 @@ public interface MerchantPaymentApi {
      * @return 返回结果实体
      */
     @POST(OpenApiConstants.GATEWAY)
-    @FubeiOpenApi(method = "openapi.payment.order.reverse")
+    @FubeiOpenApi(method = "openapi.payment.order.mina")
     Call<PaymentMinaOrderModel> orderMina(@Body ParamPaymentOrderMina param);
 
     /**
