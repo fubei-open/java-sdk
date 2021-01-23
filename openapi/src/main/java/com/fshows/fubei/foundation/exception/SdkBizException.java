@@ -9,8 +9,6 @@ import com.fshows.fubei.foundation.model.CommonResultModel;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 
-import javax.annotation.Nonnull;
-import java.text.MessageFormat;
 import java.util.Map;
 
 /**
@@ -27,7 +25,7 @@ public class SdkBizException extends AbstractNetException {
         this.resultMessage = Strings.nullToEmpty(resultMessage);
     }
 
-    public SdkBizException(@Nonnull final CommonResultModel commonResultModel) {
+    public SdkBizException(final CommonResultModel commonResultModel) {
         this.resultCode = commonResultModel.getResultCode();
         this.resultMessage = commonResultModel.getResultMessage();
         if (commonResultModel.getSubCode() != null) {

@@ -13,8 +13,6 @@ import com.google.common.base.Strings;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.text.MessageFormat;
@@ -46,9 +44,8 @@ public class FubeiOpenApiResponseBodyConverter<T> implements Converter<ResponseB
      * @param value responseBody
      * @return 实体对象
      */
-    @Nullable
     @Override
-    public T convert(@Nonnull ResponseBody value) throws IOException {
+    public T convert(ResponseBody value) throws IOException {
         try {
             // 获得响应Body
             String body = value.string();

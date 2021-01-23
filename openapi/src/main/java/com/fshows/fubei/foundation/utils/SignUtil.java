@@ -12,7 +12,6 @@ import com.google.common.hash.Hashing;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.nio.charset.Charset;
 import java.util.Map;
 
@@ -51,7 +50,6 @@ public class SignUtil {
      * @param appSecret    商户密钥
      * @return 用于签名的元字符串
      */
-    @Nonnull
     private static String baseString(RequestParam requestParam, String appSecret) {
         // 将requestParam对象转为Map
         StringBuilder sb = new StringBuilder();
@@ -71,7 +69,6 @@ public class SignUtil {
      * @param param 参数对象
      * @return 映射
      */
-    @Nonnull
     private static Map<String, String> mapper(final RequestParam param) {
         return Supplier.Util.safe(new ThrowableSupplier<Map<String, String>, Throwable>() {
 
