@@ -6,12 +6,9 @@ plugins {
 }
 
 group 'com.fshows.fubei'
-<<<<<<< HEAD
 version '1.0.2-SNAPSHOT'
-=======
-version '1.0-SNAPSHOT'
 mainClassName = 'com.fshows.fubei.FubeiOpenApi'
->>>>>>> 2ec354511a252daebd97b9d96baeaca564c91e86
+
 
 repositories {
     mavenCentral()
