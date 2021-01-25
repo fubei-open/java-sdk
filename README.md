@@ -66,7 +66,7 @@ alpha阶段Maven和Gradle方式需要自行使用命令编译源码，并通过�
 <dependency>
     <groupId>com.fshows.fubei</groupId>
     <artifactId>openapi-java-sdk</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -84,7 +84,7 @@ repositories {
 2、在项目dependencies中引入依赖
 ```groovy
 dependencies {
-    implementation 'com.fshows.fubei:openapi-java-sdk:1.0-SNAPSHOT'
+    implementation 'com.fshows.fubei:openapi-java-sdk:1.0.2-SNAPSHOT'
 }
 ```
 
