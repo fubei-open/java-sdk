@@ -2,6 +2,7 @@ package com.fshows.fubei;
 
 import com.alibaba.fastjson.JSON;
 import com.fshows.fubei.biz.agent.api.legacy.AgentApi;
+import com.fshows.fubei.biz.agent.api.legacy.AgentPaymentApi;
 import com.fshows.fubei.biz.agent.enums.ImageBusType;
 import com.fshows.fubei.biz.agent.model.entity.*;
 import com.fshows.fubei.biz.agent.model.param.*;
@@ -443,6 +444,34 @@ public class OpenApiUnitTest {
         // 备注
         param.setRemark("");
         CateStoreInfoModel responseModel = FubeiOpenApiProxy.getInstance().create(AgentApi.class).updateStoreInfo(param).execute().body();
+        System.out.println(objectToString(responseModel));
+    }
+
+    /**
+     * 测试开放平台2.0（代理商接口）- 付款码支付接口
+     * 商户维度
+     */
+    @Test
+    public void testAgentOrderPay() throws IOException {
+        ParamOrderPay param = new ParamOrderPay();
+        param.setMerchantOrderSn(MerchantOrderIdUtil.genMerchantOrderId());
+        param.setTotalAmount(BigDecimal.valueOf(0.1));
+        param.setStoreId(632301);
+        param.setAuthCode("134504537719767057");
+        OrderPayModel responseModel = FubeiOpenApiProxy.getInstance().create(AgentPaymentApi.class).orderPay(param).execute().body();
+        System.out.println(objectToString(responseModel));
+    }
+
+    @Test
+    public void testAgentOrderCreate() throws IOException {
+        ParamOrderCreate param = new ParamOrderCreate();
+        param.setMerchantOrderSn(MerchantOrderIdUtil.genMerchantOrderId());
+        param.setPayType("wxpay");
+        param.setTotalAmount(BigDecimal.valueOf(0.1));
+        param.setStoreId(632301);
+        param.setSubAppId("");
+        param.setUserId("");
+        OrderCreateModel responseModel = FubeiOpenApiProxy.getInstance().create(AgentPaymentApi.class).orderCreate(param).execute().body();
         System.out.println(objectToString(responseModel));
     }
 

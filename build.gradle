@@ -7,13 +7,24 @@ allprojects {
 //    apply plugin: 'maven'
     apply plugin: 'maven-publish'
     apply plugin: 'idea'
+    apply plugin: 'com.github.johnrengelman.shadow'
 
     configurations {
         compile.exclude module: 'spring-boot-starter-logging'
-        compile.exclude module: "logback-classic"
-        compile.exclude module: "log4j-over-slf4j"
+        compile.exclude module: 'logback-classic'
+        compile.exclude module: 'log4j-over-slf4j'
         compile.exclude module: 'slf4j-log4j12'
         compile.exclude module: 'log4j'
+    }
+}
+
+buildscript {
+    repositories {
+        maven { url "https://mirrors.huaweicloud.com/repository/maven/" }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.3'
     }
 }
 
@@ -60,5 +71,16 @@ subprojects {
         // 日志
         implementation 'org.slf4j:slf4j-api:1.7.26'
         implementation 'org.slf4j:slf4j-simple:1.7.26'
+
+
+        shadow 'com.google.guava:guava:26.0-jre'
+        shadow 'com.alibaba:fastjson:1.2.31'
+        shadow 'com.annimon:stream:1.2.1'
+        shadow 'com.squareup.retrofit2:retrofit:2.6.0'
+        shadow 'com.squareup.okhttp3:logging-interceptor:3.14.2'
+
+        // 日志
+        shadow 'org.slf4j:slf4j-api:1.7.26'
+        shadow 'org.slf4j:slf4j-simple:1.7.26'
     }
 }

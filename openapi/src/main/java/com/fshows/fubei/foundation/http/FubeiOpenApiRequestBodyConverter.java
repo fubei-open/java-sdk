@@ -15,8 +15,6 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Converter;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * 付呗开放平台 接口Request转换
@@ -47,7 +45,7 @@ public class FubeiOpenApiRequestBodyConverter<T> implements Converter<T, Request
      */
     private FubeiOpenApi fubeiOpenApi;
 
-    FubeiOpenApiRequestBodyConverter(@Nullable FubeiOpenApi fubeiOpenApi) {
+    FubeiOpenApiRequestBodyConverter(FubeiOpenApi fubeiOpenApi) {
         if (fubeiOpenApi != null) {
             this.fubeiOpenApi = fubeiOpenApi;
         }
@@ -58,9 +56,8 @@ public class FubeiOpenApiRequestBodyConverter<T> implements Converter<T, Request
      * @param value bizContent对象
      * @return RequestBody
      */
-    @Nullable
     @Override
-    public RequestBody convert(@Nonnull T value) {
+    public RequestBody convert(T value) {
         RequestParam param;
         if (value instanceof BaseBizContentModel) {
             // 将要转换的对象替换成业务对象
