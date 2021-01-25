@@ -35,6 +35,29 @@ public class ParamMerchantAdjustRate extends BaseBizContentModel {
      */
     @JSONField(name = "wx_fee_rate_float")
     private String wxFeeRateFloat;
+    /**
+     * 银联商户终端费率（‰），范围：3.8~100
+     */
+    @JSONField(name = "union_fee_rate_float")
+    private String unionFeeRateFloat;
+
+    /**
+     * Getter method for property <tt>unionFeeRateFloat</tt>.
+     *
+     * @return property value of unionFeeRateFloat
+     */
+    public String getUnionFeeRateFloat() {
+        return unionFeeRateFloat;
+    }
+
+    /**
+     * Setter method for property <tt>unionFeeRateFloat</tt>.
+     *
+     * @param unionFeeRateFloat value to be assigned to property unionFeeRateFloat
+     */
+    public void setUnionFeeRateFloat(String unionFeeRateFloat) {
+        this.unionFeeRateFloat = unionFeeRateFloat;
+    }
 
     public Integer getMerchantId() {
         return merchantId;

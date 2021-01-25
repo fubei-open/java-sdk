@@ -1,8 +1,28 @@
 package com.fshows.fubei.biz.agent.api.legacy;
 
 import com.fshows.fubei.biz.agent.model.BizResult;
-import com.fshows.fubei.biz.agent.model.entity.*;
-import com.fshows.fubei.biz.agent.model.param.*;
+import com.fshows.fubei.biz.agent.model.entity.BankCardUpdateModel;
+import com.fshows.fubei.biz.agent.model.entity.BankModel;
+import com.fshows.fubei.biz.agent.model.entity.GetImageModel;
+import com.fshows.fubei.biz.agent.model.entity.ImgUploadModel;
+import com.fshows.fubei.biz.agent.model.entity.MerchantAdjustRateModel;
+import com.fshows.fubei.biz.agent.model.entity.MerchantIncomeModel;
+import com.fshows.fubei.biz.agent.model.entity.MerchantInfoModel;
+import com.fshows.fubei.biz.agent.model.entity.MerchantStatusModel;
+import com.fshows.fubei.biz.agent.model.entity.pay.OrderCreateModel;
+import com.fshows.fubei.biz.agent.model.entity.pay.OrderPayModel;
+import com.fshows.fubei.biz.agent.model.entity.pay.OrderQrcodeModel;
+import com.fshows.fubei.biz.agent.model.param.ParamBankBranches;
+import com.fshows.fubei.biz.agent.model.param.ParamBankUpdate;
+import com.fshows.fubei.biz.agent.model.param.ParamBanks;
+import com.fshows.fubei.biz.agent.model.param.ParamGetImageUrl;
+import com.fshows.fubei.biz.agent.model.param.ParamImgUpload;
+import com.fshows.fubei.biz.agent.model.param.ParamMerchantAdjustRate;
+import com.fshows.fubei.biz.agent.model.param.ParamMerchantCode;
+import com.fshows.fubei.biz.agent.model.param.ParamMerchantSettle;
+import com.fshows.fubei.biz.agent.model.param.pay.ParamCreatePay;
+import com.fshows.fubei.biz.agent.model.param.pay.ParamOrderPay;
+import com.fshows.fubei.biz.agent.model.param.pay.ParamOrderQrcode;
 import com.fshows.fubei.biz.merchant.model.entity.CateStoreInfoModel;
 import com.fshows.fubei.biz.merchant.model.param.ParamCateStoreInfo;
 import com.fshows.fubei.foundation.annotation.FubeiOpenApi;
@@ -62,6 +82,19 @@ public interface AgentApi {
 
 
     /**
+     * 门店创建
+     * 备注：该接口同时支持商户级和代理商级调用
+     * 代理商级调用：需要vendor_sn和vendor_secret
+     * 商户级调用：需要app_id和app_secret
+     * http://docs.51fubei.com/agent-api/newmethods/storeInfoModify.html
+     * @param param 参数
+     * @return 门店响应参数
+     */
+    @POST(OpenApiConstants.GATEWAY_AGENT)
+    @FubeiOpenApi(method = "openapi.cate.store.info.create", openApiType = OpenApiType.AGENT)
+    Call<CateStoreInfoModel> createStoreInfo(@Body ParamCateStoreInfo param);
+
+    /**
      * 门店信息修改
      * 备注：该接口同时支持商户级和代理商级调用
      * 代理商级调用：需要vendor_sn和vendor_secret
@@ -71,7 +104,7 @@ public interface AgentApi {
      * @return 门店响应参数
      */
     @POST(OpenApiConstants.GATEWAY_AGENT)
-    @FubeiOpenApi(method = "openapi.cate.store.info", openApiType = OpenApiType.AGENT)
+    @FubeiOpenApi(method = "openapi.cate.store.info.update", openApiType = OpenApiType.AGENT)
     Call<CateStoreInfoModel> updateStoreInfo(@Body ParamCateStoreInfo param);
 
 
@@ -134,4 +167,29 @@ public interface AgentApi {
     @POST(OpenApiConstants.GATEWAY_AGENT)
     @FubeiOpenApi(method = "openapi.agent.merchant.update.bank.card", openApiType = OpenApiType.AGENT)
     Call<BankCardUpdateModel> updateBankCard(@Body ParamBankUpdate param);
+
+    /**
+     * 付款码支付
+     * @param param
+     * @return
+     */
+    @POST(OpenApiConstants.GATEWAY_AGENT)
+    @FubeiOpenApi(method = "fbpay.order.pay", openApiType = OpenApiType.AGENT)
+    Call<OrderPayModel> orderPay(@Body ParamOrderPay param);
+    /**
+     * 统一下单
+     * @param param
+     * @return
+     */
+    @POST(OpenApiConstants.GATEWAY_AGENT)
+    @FubeiOpenApi(method = "fbpay.order.create", openApiType = OpenApiType.AGENT)
+    Call<OrderCreateModel> orderCreate(@Body ParamCreatePay param);
+    /**
+     * 定额码支付
+     * @param param
+     * @return
+     */
+    @POST(OpenApiConstants.GATEWAY_AGENT)
+    @FubeiOpenApi(method = "fbpay.order.qrcode", openApiType = OpenApiType.AGENT)
+    Call<OrderQrcodeModel> orderQrcode(@Body ParamOrderQrcode param);
 }

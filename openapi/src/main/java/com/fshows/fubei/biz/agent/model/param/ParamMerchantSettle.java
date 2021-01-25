@@ -19,6 +19,12 @@ public class ParamMerchantSettle extends BaseBizContentModel {
     private String merchantCode;
 
     /**
+     * 授理商账号，将商户与该授理商进行关联
+     */
+    @JSONField(name = "sales_man")
+    private String salesMan;
+
+    /**
      * 商户手机号
      */
     @JSONField(name = "contact_phone")
@@ -207,6 +213,50 @@ public class ParamMerchantSettle extends BaseBizContentModel {
     private String operatingLicensePhoto;
 
     /**
+     * 法定代表人身份证人像面照
+     */
+    @JSONField(name = "legal_id_card_front_photo")
+    private String legalIdCardFrontPhoto;
+
+    /**
+     * 法定代表人身份证国徽面照
+     */
+    @JSONField(name = "legal_id_card_back_photo")
+    private String legalIdCardBackPhoto;
+
+    /**
+     * 非法人结算证明
+     */
+    @JSONField(name = "unincorporated_photo")
+    private String unincorporatedPhoto;
+
+    /**
+     * 法人身份证姓名（非法人结算情况下必填）
+     */
+    @JSONField(name = "unincorporated_legal_name")
+    private String unincorporatedLegalName;
+    /**
+     * 法人身份证号（非法人结算情况下必填）
+     */
+    @JSONField(name = "unincorporated_legal_num")
+    private String unincorporatedLegalNum;
+    /**
+     * 法人身份证有效期开始时间（非法人结算情况下必填） 格式"20210101"
+     */
+    @JSONField(name = "unincorporated_legal_begindate")
+    private String unincorporatedLegalBegindate;
+    /**
+     * 法人身份证有效期结束时间（非法人结算情况下必填）格式"20210202" 长期情况下该字段为空
+     */
+    @JSONField(name = "unincorporated_legal_enddate")
+    private String unincorporatedLegalEnddate;
+    /**
+     * 法人身份证有效期，是否永久有效：0：非长期 1：长期
+     */
+    @JSONField(name = "unincorporated_legal_permanent")
+    private Integer unincorporatedLegalPermanent;
+
+    /**
      * 门头照片
      */
     @JSONField(name = "store_front_img_url")
@@ -247,6 +297,275 @@ public class ParamMerchantSettle extends BaseBizContentModel {
      */
     @JSONField(name = "wx_fee_rate_float")
     private String wxFeeRateFloat;
+
+    /**
+     * 银联商户终端费率
+     */
+    @JSONField(name = "union_fee_rate_float")
+    private String unionFeeRateFloat;
+
+    /**
+     * 关联支付appid,如果调用统一下单,建议必填该字段，传入对应使用的微信公众号，即统一下单接口中的sub_appid
+     */
+    @JSONField(name = "pay_app_id")
+    private String payAppId;
+    /**
+     * 推荐关注appid
+     */
+    @JSONField(name = "follow_app_id")
+    private String followAppId;
+    /**
+     * 小程序appid
+     */
+    @JSONField(name = "mina_app_id")
+    private String minaAppId;
+    /**
+     * 支付回调地址
+     */
+    @JSONField(name = "call_back")
+    private String callBack;
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalName</tt>.
+     *
+     * @return property value of unincorporatedLegalName
+     */
+    public String getUnincorporatedLegalName() {
+        return unincorporatedLegalName;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalName</tt>.
+     *
+     * @param unincorporatedLegalName value to be assigned to property unincorporatedLegalName
+     */
+    public void setUnincorporatedLegalName(String unincorporatedLegalName) {
+        this.unincorporatedLegalName = unincorporatedLegalName;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalNum</tt>.
+     *
+     * @return property value of unincorporatedLegalNum
+     */
+    public String getUnincorporatedLegalNum() {
+        return unincorporatedLegalNum;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalNum</tt>.
+     *
+     * @param unincorporatedLegalNum value to be assigned to property unincorporatedLegalNum
+     */
+    public void setUnincorporatedLegalNum(String unincorporatedLegalNum) {
+        this.unincorporatedLegalNum = unincorporatedLegalNum;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalBegindate</tt>.
+     *
+     * @return property value of unincorporatedLegalBegindate
+     */
+    public String getUnincorporatedLegalBegindate() {
+        return unincorporatedLegalBegindate;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalBegindate</tt>.
+     *
+     * @param unincorporatedLegalBegindate value to be assigned to property unincorporatedLegalBegindate
+     */
+    public void setUnincorporatedLegalBegindate(String unincorporatedLegalBegindate) {
+        this.unincorporatedLegalBegindate = unincorporatedLegalBegindate;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalEnddate</tt>.
+     *
+     * @return property value of unincorporatedLegalEnddate
+     */
+    public String getUnincorporatedLegalEnddate() {
+        return unincorporatedLegalEnddate;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalEnddate</tt>.
+     *
+     * @param unincorporatedLegalEnddate value to be assigned to property unincorporatedLegalEnddate
+     */
+    public void setUnincorporatedLegalEnddate(String unincorporatedLegalEnddate) {
+        this.unincorporatedLegalEnddate = unincorporatedLegalEnddate;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalPermanent</tt>.
+     *
+     * @return property value of unincorporatedLegalPermanent
+     */
+    public Integer getUnincorporatedLegalPermanent() {
+        return unincorporatedLegalPermanent;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalPermanent</tt>.
+     *
+     * @param unincorporatedLegalPermanent value to be assigned to property unincorporatedLegalPermanent
+     */
+    public void setUnincorporatedLegalPermanent(Integer unincorporatedLegalPermanent) {
+        this.unincorporatedLegalPermanent = unincorporatedLegalPermanent;
+    }
+
+    /**
+     * Getter method for property <tt>legalIdCardFrontPhoto</tt>.
+     *
+     * @return property value of legalIdCardFrontPhoto
+     */
+    public String getLegalIdCardFrontPhoto() {
+        return legalIdCardFrontPhoto;
+    }
+
+    /**
+     * Setter method for property <tt>legalIdCardFrontPhoto</tt>.
+     *
+     * @param legalIdCardFrontPhoto value to be assigned to property legalIdCardFrontPhoto
+     */
+    public void setLegalIdCardFrontPhoto(String legalIdCardFrontPhoto) {
+        this.legalIdCardFrontPhoto = legalIdCardFrontPhoto;
+    }
+
+    /**
+     * Getter method for property <tt>legalIdCardBackPhoto</tt>.
+     *
+     * @return property value of legalIdCardBackPhoto
+     */
+    public String getLegalIdCardBackPhoto() {
+        return legalIdCardBackPhoto;
+    }
+
+    /**
+     * Setter method for property <tt>legalIdCardBackPhoto</tt>.
+     *
+     * @param legalIdCardBackPhoto value to be assigned to property legalIdCardBackPhoto
+     */
+    public void setLegalIdCardBackPhoto(String legalIdCardBackPhoto) {
+        this.legalIdCardBackPhoto = legalIdCardBackPhoto;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedPhoto</tt>.
+     *
+     * @return property value of unincorporatedPhoto
+     */
+    public String getUnincorporatedPhoto() {
+        return unincorporatedPhoto;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedPhoto</tt>.
+     *
+     * @param unincorporatedPhoto value to be assigned to property unincorporatedPhoto
+     */
+    public void setUnincorporatedPhoto(String unincorporatedPhoto) {
+        this.unincorporatedPhoto = unincorporatedPhoto;
+    }
+
+    /**
+     * Getter method for property <tt>unionFeeRateFloat</tt>.
+     *
+     * @return property value of unionFeeRateFloat
+     */
+    public String getUnionFeeRateFloat() {
+        return unionFeeRateFloat;
+    }
+
+    /**
+     * Setter method for property <tt>unionFeeRateFloat</tt>.
+     *
+     * @param unionFeeRateFloat value to be assigned to property unionFeeRateFloat
+     */
+    public void setUnionFeeRateFloat(String unionFeeRateFloat) {
+        this.unionFeeRateFloat = unionFeeRateFloat;
+    }
+
+    /**
+     * Getter method for property <tt>payAppId</tt>.
+     *
+     * @return property value of payAppId
+     */
+    public String getPayAppId() {
+        return payAppId;
+    }
+
+    /**
+     * Setter method for property <tt>payAppId</tt>.
+     *
+     * @param payAppId value to be assigned to property payAppId
+     */
+    public void setPayAppId(String payAppId) {
+        this.payAppId = payAppId;
+    }
+
+    /**
+     * Getter method for property <tt>followAppId</tt>.
+     *
+     * @return property value of followAppId
+     */
+    public String getFollowAppId() {
+        return followAppId;
+    }
+
+    /**
+     * Setter method for property <tt>followAppId</tt>.
+     *
+     * @param followAppId value to be assigned to property followAppId
+     */
+    public void setFollowAppId(String followAppId) {
+        this.followAppId = followAppId;
+    }
+
+    /**
+     * Getter method for property <tt>minaAppId</tt>.
+     *
+     * @return property value of minaAppId
+     */
+    public String getMinaAppId() {
+        return minaAppId;
+    }
+
+    /**
+     * Setter method for property <tt>minaAppId</tt>.
+     *
+     * @param minaAppId value to be assigned to property minaAppId
+     */
+    public void setMinaAppId(String minaAppId) {
+        this.minaAppId = minaAppId;
+    }
+
+    /**
+     * Getter method for property <tt>callBack</tt>.
+     *
+     * @return property value of callBack
+     */
+    public String getCallBack() {
+        return callBack;
+    }
+
+    /**
+     * Setter method for property <tt>callBack</tt>.
+     *
+     * @param callBack value to be assigned to property callBack
+     */
+    public void setCallBack(String callBack) {
+        this.callBack = callBack;
+    }
+
+    public String getSalesMan() {
+        return salesMan;
+    }
+
+    public void setSalesMan(String salesMan) {
+        this.salesMan = salesMan;
+    }
 
     public String getMerchantCode() {
         return merchantCode;

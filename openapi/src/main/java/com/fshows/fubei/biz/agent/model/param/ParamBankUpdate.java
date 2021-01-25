@@ -35,7 +35,11 @@ public class ParamBankUpdate extends BaseBizContentModel {
      */
     @JSONField(name = "bank_card_image")
     private String bankCardImage;
-
+    /**
+     * 银行预留手机号
+     */
+    @JSONField(name = "bank_cell_phone")
+    private String bankCellPhone;
     /**
      * 所属银行编码
      */
@@ -94,5 +98,23 @@ public class ParamBankUpdate extends BaseBizContentModel {
 
     public void setUnionpayCode(String unionpayCode) {
         this.unionpayCode = unionpayCode;
+    }
+
+    /**
+     * Getter method for property <tt>bankCellPhone</tt>.
+     *
+     * @return property value of bankCellPhone
+     */
+    public String getBankCellPhone() {
+        return bankCellPhone;
+    }
+
+    /**
+     * Setter method for property <tt>bankCellPhone</tt>.
+     *
+     * @param bankCellPhone value to be assigned to property bankCellPhone
+     */
+    public void setBankCellPhone(String bankCellPhone) {
+        this.bankCellPhone = bankCellPhone;
     }
 }

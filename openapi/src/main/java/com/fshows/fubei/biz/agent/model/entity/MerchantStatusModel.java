@@ -19,7 +19,11 @@ public class MerchantStatusModel implements BaseModel {
      */
     @JSONField(name = "merchant_code")
     private String merchantCode;
-
+    /**
+     * 付呗商户号
+     */
+    @JSONField(name = "merchant_id")
+    private Integer merchantId;
     /**
      * 认证状态
      */
@@ -37,6 +41,24 @@ public class MerchantStatusModel implements BaseModel {
      */
     @JSONField(name = "store_list")
     private List<StoreStatusModel> storeList;
+
+    /**
+     * Getter method for property <tt>merchantId</tt>.
+     *
+     * @return property value of merchantId
+     */
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    /**
+     * Setter method for property <tt>merchantId</tt>.
+     *
+     * @param merchantId value to be assigned to property merchantId
+     */
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
 
     public String getMerchantCode() {
         return merchantCode;

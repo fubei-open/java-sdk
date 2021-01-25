@@ -156,6 +156,49 @@ public class ParamCateStoreInfo extends BaseBizContentModel {
      */
     @JSONField(name = "operating_license_photo")
     private String operatingLicensePhoto;
+    /**
+     * 法定代表人身份证人像面照
+     */
+    @JSONField(name = "legal_id_card_front_photo")
+    private String legalIdCardFrontPhoto;
+
+    /**
+     * 法定代表人身份证国徽面照
+     */
+    @JSONField(name = "legal_id_card_back_photo")
+    private String legalIdCardBackPhoto;
+
+    /**
+     * 非法人结算证明
+     */
+    @JSONField(name = "unincorporated_photo")
+    private String unincorporatedPhoto;
+
+    /**
+     * 法人身份证姓名（非法人结算情况下必填）
+     */
+    @JSONField(name = "unincorporated_legal_name")
+    private String unincorporatedLegalName;
+    /**
+     * 法人身份证号（非法人结算情况下必填）
+     */
+    @JSONField(name = "unincorporated_legal_num")
+    private String unincorporatedLegalNum;
+    /**
+     * 法人身份证有效期开始时间（非法人结算情况下必填） 格式"20210101"
+     */
+    @JSONField(name = "unincorporated_legal_begindate")
+    private String unincorporatedLegalBegindate;
+    /**
+     * 法人身份证有效期结束时间（非法人结算情况下必填）格式"20210202" 长期情况下该字段为空
+     */
+    @JSONField(name = "unincorporated_legal_enddate")
+    private String unincorporatedLegalEnddate;
+    /**
+     * 法人身份证有效期，是否永久有效：0：非长期 1：长期
+     */
+    @JSONField(name = "unincorporated_legal_permanent")
+    private Integer unincorporatedLegalPermanent;
 
     /**
      * 其他照片
@@ -375,5 +418,149 @@ public class ParamCateStoreInfo extends BaseBizContentModel {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    /**
+     * Getter method for property <tt>legalIdCardFrontPhoto</tt>.
+     *
+     * @return property value of legalIdCardFrontPhoto
+     */
+    public String getLegalIdCardFrontPhoto() {
+        return legalIdCardFrontPhoto;
+    }
+
+    /**
+     * Setter method for property <tt>legalIdCardFrontPhoto</tt>.
+     *
+     * @param legalIdCardFrontPhoto value to be assigned to property legalIdCardFrontPhoto
+     */
+    public void setLegalIdCardFrontPhoto(String legalIdCardFrontPhoto) {
+        this.legalIdCardFrontPhoto = legalIdCardFrontPhoto;
+    }
+
+    /**
+     * Getter method for property <tt>legalIdCardBackPhoto</tt>.
+     *
+     * @return property value of legalIdCardBackPhoto
+     */
+    public String getLegalIdCardBackPhoto() {
+        return legalIdCardBackPhoto;
+    }
+
+    /**
+     * Setter method for property <tt>legalIdCardBackPhoto</tt>.
+     *
+     * @param legalIdCardBackPhoto value to be assigned to property legalIdCardBackPhoto
+     */
+    public void setLegalIdCardBackPhoto(String legalIdCardBackPhoto) {
+        this.legalIdCardBackPhoto = legalIdCardBackPhoto;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedPhoto</tt>.
+     *
+     * @return property value of unincorporatedPhoto
+     */
+    public String getUnincorporatedPhoto() {
+        return unincorporatedPhoto;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedPhoto</tt>.
+     *
+     * @param unincorporatedPhoto value to be assigned to property unincorporatedPhoto
+     */
+    public void setUnincorporatedPhoto(String unincorporatedPhoto) {
+        this.unincorporatedPhoto = unincorporatedPhoto;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalName</tt>.
+     *
+     * @return property value of unincorporatedLegalName
+     */
+    public String getUnincorporatedLegalName() {
+        return unincorporatedLegalName;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalName</tt>.
+     *
+     * @param unincorporatedLegalName value to be assigned to property unincorporatedLegalName
+     */
+    public void setUnincorporatedLegalName(String unincorporatedLegalName) {
+        this.unincorporatedLegalName = unincorporatedLegalName;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalNum</tt>.
+     *
+     * @return property value of unincorporatedLegalNum
+     */
+    public String getUnincorporatedLegalNum() {
+        return unincorporatedLegalNum;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalNum</tt>.
+     *
+     * @param unincorporatedLegalNum value to be assigned to property unincorporatedLegalNum
+     */
+    public void setUnincorporatedLegalNum(String unincorporatedLegalNum) {
+        this.unincorporatedLegalNum = unincorporatedLegalNum;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalBegindate</tt>.
+     *
+     * @return property value of unincorporatedLegalBegindate
+     */
+    public String getUnincorporatedLegalBegindate() {
+        return unincorporatedLegalBegindate;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalBegindate</tt>.
+     *
+     * @param unincorporatedLegalBegindate value to be assigned to property unincorporatedLegalBegindate
+     */
+    public void setUnincorporatedLegalBegindate(String unincorporatedLegalBegindate) {
+        this.unincorporatedLegalBegindate = unincorporatedLegalBegindate;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalEnddate</tt>.
+     *
+     * @return property value of unincorporatedLegalEnddate
+     */
+    public String getUnincorporatedLegalEnddate() {
+        return unincorporatedLegalEnddate;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalEnddate</tt>.
+     *
+     * @param unincorporatedLegalEnddate value to be assigned to property unincorporatedLegalEnddate
+     */
+    public void setUnincorporatedLegalEnddate(String unincorporatedLegalEnddate) {
+        this.unincorporatedLegalEnddate = unincorporatedLegalEnddate;
+    }
+
+    /**
+     * Getter method for property <tt>unincorporatedLegalPermanent</tt>.
+     *
+     * @return property value of unincorporatedLegalPermanent
+     */
+    public Integer getUnincorporatedLegalPermanent() {
+        return unincorporatedLegalPermanent;
+    }
+
+    /**
+     * Setter method for property <tt>unincorporatedLegalPermanent</tt>.
+     *
+     * @param unincorporatedLegalPermanent value to be assigned to property unincorporatedLegalPermanent
+     */
+    public void setUnincorporatedLegalPermanent(Integer unincorporatedLegalPermanent) {
+        this.unincorporatedLegalPermanent = unincorporatedLegalPermanent;
     }
 }

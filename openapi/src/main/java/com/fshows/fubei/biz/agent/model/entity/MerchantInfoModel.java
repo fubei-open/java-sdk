@@ -168,12 +168,105 @@ public class MerchantInfoModel implements BaseModel {
      */
     @JSONField(name = "wx_fee_rate_float")
     private String wxFeeRateFloat;
+    /**
+     * 银联商户终端费率（‰），范围：3.8~100
+     */
+    @JSONField(name = "union_fee_rate_float")
+    private String unionFeeRateFloat;
+    /**
+     * 支付回调地址
+     */
+    @JSONField(name = "call_back")
+    private String callBack;
+    /**
+     * 商户APPID
+     */
+    @JSONField(name = "app_id")
+    private String appId;
+
+    /**
+     * 商户秘钥
+     */
+    @JSONField(name = "app_secret")
+    private String appSecret;
 
     /**
      * 门店信息列表
      */
     @JSONField(name = "store_info_list")
     private List<StoreInfoModel> storeInfoList;
+
+    /**
+     * Getter method for property <tt>unionFeeRateFloat</tt>.
+     *
+     * @return property value of unionFeeRateFloat
+     */
+    public String getUnionFeeRateFloat() {
+        return unionFeeRateFloat;
+    }
+
+    /**
+     * Setter method for property <tt>unionFeeRateFloat</tt>.
+     *
+     * @param unionFeeRateFloat value to be assigned to property unionFeeRateFloat
+     */
+    public void setUnionFeeRateFloat(String unionFeeRateFloat) {
+        this.unionFeeRateFloat = unionFeeRateFloat;
+    }
+
+    /**
+     * Getter method for property <tt>callBack</tt>.
+     *
+     * @return property value of callBack
+     */
+    public String getCallBack() {
+        return callBack;
+    }
+
+    /**
+     * Setter method for property <tt>callBack</tt>.
+     *
+     * @param callBack value to be assigned to property callBack
+     */
+    public void setCallBack(String callBack) {
+        this.callBack = callBack;
+    }
+
+    /**
+     * Getter method for property <tt>appId</tt>.
+     *
+     * @return property value of appId
+     */
+    public String getAppId() {
+        return appId;
+    }
+
+    /**
+     * Setter method for property <tt>appId</tt>.
+     *
+     * @param appId value to be assigned to property appId
+     */
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    /**
+     * Getter method for property <tt>appSecret</tt>.
+     *
+     * @return property value of appSecret
+     */
+    public String getAppSecret() {
+        return appSecret;
+    }
+
+    /**
+     * Setter method for property <tt>appSecret</tt>.
+     *
+     * @param appSecret value to be assigned to property appSecret
+     */
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
+    }
 
     public String getMerchantCode() {
         return merchantCode;
