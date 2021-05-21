@@ -56,6 +56,12 @@ public class ParamPaymentOrderMina extends BaseBizContentModel {
     @JSONField(name = "attach")
     private String attach;
 
+    /**
+     * 回调地址
+     */
+    @JSONField(name = "call_back")
+    private String callback;
+
     public String getMerchantOrderSn() {
         return merchantOrderSn;
     }
@@ -110,5 +116,13 @@ public class ParamPaymentOrderMina extends BaseBizContentModel {
 
     public void setAttach(String attach) {
         this.attach = attach;
+    }
+
+    public String getCallback() {
+        return callback;
+    }
+
+    public void setCallback(String callback) {
+        this.callback = callback;
     }
 }
